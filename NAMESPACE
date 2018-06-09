@@ -1,0 +1,7 @@
+useDynLib(pseudorank, .registration=TRUE)
+export(psrank, psrank.numeric, psrank.formula, AB)
+S3method(psrank, numeric)
+S3method(psrank, formula)
+importFrom(Rcpp, evalCpp)
+importFrom(pracma, Lcm)
+importFrom("stats", "model.frame")

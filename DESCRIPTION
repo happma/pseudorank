@@ -1,0 +1,19 @@
+Package: pseudorank
+Title: Pseudo-Ranks
+Version: 0.1.0
+Date: 2018-06-08
+Authors@R: c(person("Martin Happ", role = c("aut", "cre"),
+                      email = "martin.happ@aon.at",
+                      comment = c(ORCID = "0000-0003-0009-2665")),
+	      person("Georg Zimmermann", role = "aut"),
+	      person("Arne C. Bathke", role = "aut"),
+	      person("Edgar Brunner", role = "aut"))
+Author: Martin Happ [aut, cre], Georg Zimmermann [aut], Arne C. Bathke [aut], Edgar Brunner [aut]
+Maintainer: Martin Happ <martin.happ@aon.at>
+Description: Function to calculate pseudo-ranks. In case of equal sample sizes, pseudo-ranks and ranks are equal. When used for inference pseudo-ranks do not lead to paradoxical results unlike ranks. For details, see Brunner, E., Bathke A. C. and Konietschke, F: Rank- and Pseudo-Rank Procedures in Factorial Designs - Using R and SAS, Springer Verlag, to appear.
+License: GPL-2
+Encoding: UTF-8
+LazyData: true
+Imports: Rcpp (>= 0.12.16), pracma, data.table
+LinkingTo: Rcpp
+RoxygenNote: 6.0.1

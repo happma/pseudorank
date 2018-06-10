@@ -3,7 +3,7 @@
 \name{hettmansperger_norton_test}
 \alias{hettmansperger_norton_test}
 \alias{hettmansperger_norton_test.numeric}
-\alias{hettmansperger_norton_test.data.frame}
+\alias{hettmansperger_norton_test.formula}
 \title{Hettmansperger-Norton Trend Test for k-Samples}
 \usage{
 hettmansperger_norton_test(data, ...)
@@ -11,7 +11,7 @@ hettmansperger_norton_test(data, ...)
 \method{hettmansperger_norton_test}{numeric}(data, group,
   alternative = c("decreasing", "increasing"), ...)
 
-\method{hettmansperger_norton_test}{data.frame}(formula, data,
+\method{hettmansperger_norton_test}{formula}(formula, data,
   alternative = c("decreasing", "increasing"), ...)
 }
 \arguments{
@@ -33,7 +33,8 @@ This function calculates the Hettmansperger-Norton trend test using pseudo-ranks
 }
 \examples{
 # create some data, please note that the group factor needs to be ordered
-df <- data.frame(data = c(rnorm(40, 3, 1), rnorm(40, 2, 1), rnorm(20, 1, 1)), group = c(rep(1,40),rep(2,40),rep(3,20)))
+df <- data.frame(data = c(rnorm(40, 3, 1), rnorm(40, 2, 1), rnorm(20, 1, 1)),
+  group = c(rep(1,40),rep(2,40),rep(3,20)))
 df$group <- factor(df$group, ordered = TRUE)
 
 # you can either test for a decreasing or increasing trend

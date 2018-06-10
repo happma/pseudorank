@@ -26,7 +26,8 @@ This function calculates the Hettmansperger-Norton trend test using pseudo-ranks
 }
 \examples{
 # create some data, please note that the group factor needs to be ordered
-df <- data.frame(data = c(rnorm(40, 3, 1), rnorm(40, 2, 1), rnorm(20, 1, 1)), group = c(rep(1,40),rep(2,40),rep(3,20)))
+df <- data.frame(data = c(rnorm(40, 3, 1), rnorm(40, 2, 1), rnorm(20, 1, 1)),
+  group = c(rep(1,40),rep(2,40),rep(3,20)))
 df$group <- factor(df$group, ordered = TRUE)
 
 # you can either test for a decreasing or increasing trend

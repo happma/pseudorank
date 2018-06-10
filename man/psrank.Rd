@@ -3,14 +3,14 @@
 \name{psrank}
 \alias{psrank}
 \alias{psrank.numeric}
-\alias{psrank.data.frame}
+\alias{psrank.formula}
 \title{Calculation of Pseudo-Ranks}
 \usage{
 psrank(data, ...)
 
 \method{psrank}{numeric}(data, group, ...)
 
-\method{psrank}{data.frame}(formula, data, ...)
+\method{psrank}{formula}(formula, data, ...)
 }
 \arguments{
 \item{data}{numerical vector or data.frame}

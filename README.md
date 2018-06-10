@@ -5,12 +5,12 @@
 [![](https://cranlogs.r-pkg.org/badges/pseudorank)](https://cran.r-project.org/package=pseudorank)
 [![Travis-CI Build Status](https://travis-ci.org/happma/pseudorank.svg?branch=master)](https://travis-ci.org/happma/pseudorank)
 
-This R package provides a function wirtten in C++ to calculate pseudo-ranks in R.
-For a definition of pseudo-ranks, see for example 
+This R package provides a function written in C++ to calculate pseudo-ranks in R and the Hettmansperger-Norton test with pseudo-ranks instead of ranks.
+For a definition and discussion of pseudo-ranks, see for example 
 
-Brunner, E., Bathke A. C. and Konietschke, F: Rank- and Pseudo-Rank Procedures in Factorial Designs - Using R and SAS, Springer Verlag, to appear,
+Brunner, E., Bathke A. C. and Konietschke, F: Rank- and Pseudo-Rank Procedures in Factorial Designs - Using R and SAS, Springer Verlag, to appear.
 
-To install the current development version:
+To install the current development version from github:
 
 ``` r
 ## install devtools package
@@ -21,6 +21,8 @@ if (!requireNamespace("devtools", quietly = TRUE)) {
 devtools::install_github("happma/pseudorank")
 library(pseudorank)
 ```
+
+## Calculating Pseudo-Ranks
 
 The function 'psrank' can either be used with data.frames or with vectors. Please note that when using a data.frame only one grouping factor can be used.
 
@@ -37,3 +39,11 @@ psrank(df$data,df$group)
 # that is, in data~group*group2 only 'group' will be used
 psrank(data~group,df)
 ```
+
+## Hettmansperger-Norton Test for Patterned Alternatives in $k$-Sample Problems
+
+The test implemented in this package uses pseudo-ranks instead of ranks. This is mainly due to paradoxical results caused by ranks. See 
+
+Brunner, E., Konietschke, F., Bathke, A. C., & Pauly, M. (2018). Ranks and Pseudo-Ranks-Paradoxical Results of Rank Tests. arXiv preprint arXiv:1802.05650.
+
+for a discussion of this problem.

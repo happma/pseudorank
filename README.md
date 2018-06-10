@@ -18,7 +18,7 @@ if (!requireNamespace("devtools", quietly = TRUE)) {
 }
 # install package
 devtools::install_github("happma/pseudorank")
-library(WMWssp)
+library(pseudorank)
 ```
 
 The function 'psrank' can either be used with data.frames or with vectors. Please note that when using a data.frame only one grouping factor can be used.

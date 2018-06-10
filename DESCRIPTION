@@ -16,4 +16,7 @@ LazyData: true
 Depends: R (>= 3.4.0)
 Imports: Rcpp (>= 0.12.16), doBy
 LinkingTo: Rcpp
+URL: http://github.com/happma/pseudorank
+BugReports: http://github.com/happma/pseudorank/issues
 RoxygenNote: 6.0.1
+Suggests: testthat

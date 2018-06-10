@@ -28,10 +28,10 @@ psrank.numeric <- function(data, group, ...){
   recursiveCalculation(data, group)
 }
 
-#' @method psrank data.frame
+#' @method psrank formula
 #' @rdname psrank
 #' @keywords export
-psrank.data.frame <- function(formula, data, ...){
+psrank.formula <- function(formula, data, ...){
   df <- model.frame(formula, data)
   recursiveCalculation(df[, 1], df[, 2])
 }
@@ -62,10 +62,10 @@ hettmansperger_norton_test.numeric <- function(data, group, alternative = c("dec
   return(hettmansperger_norton_test_internal(data, group, alternative = alternative, formula = NULL, ...))
 }  
 
-#' @method hettmansperger_norton_test data.frame
+#' @method hettmansperger_norton_test formula
 #' @rdname hettmansperger_norton_test
 #' @keywords export
-hettmansperger_norton_test.data.frame <- function(formula, data, alternative = c("decreasing", "increasing"), ...) {
+hettmansperger_norton_test.formula <- function(formula, data, alternative = c("decreasing", "increasing"), ...) {
   model <- model.frame(formula, data = data)
   colnames(model) <- c("data", "group")
   return(hettmansperger_norton_test_internal(model$data, model$group, alternative = alternative, formula = formula, ...))

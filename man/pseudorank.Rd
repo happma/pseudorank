@@ -1,5 +1,5 @@
 \name{pseudorank-package}
-\alias{pseudorank-package}
+\alias{pseudorank}
 \docType{package}
 \title{
   Pseudo-Ranks

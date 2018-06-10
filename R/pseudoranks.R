@@ -32,6 +32,7 @@ recursiveCalculation <- function(data, group) {
   }
 }
 
+
 ## Alternative (slower) algorithms
 ## ----------------------------------
 # pairwise <- function(data, group, n){

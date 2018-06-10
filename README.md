@@ -40,7 +40,7 @@ psrank(df$data,df$group)
 psrank(data~group,df)
 ```
 
-## Hettmansperger-Norton Test for Patterned Alternatives in $k$-Sample Problems
+## Hettmansperger-Norton Test for Patterned Alternatives in k-Sample Problems
 
 The test implemented in this package uses pseudo-ranks instead of ranks. This is mainly due to paradoxical results caused by ranks. See 
 

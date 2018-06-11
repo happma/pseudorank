@@ -14,6 +14,7 @@ Rcpp::NumericVector psrank(Rcpp::NumericVector data, Rcpp::NumericVector group, 
   // Calculate the first pseudo-rank
   int index = group[0];
   result[0] = N/ngroups*1/n[index-1]*1/2 + 0.5;
+  double temp = group[length];
   
   // define the matrix for the differences between the pseudo-ranks
   NumericMatrix delta(ngroups, ngroups);

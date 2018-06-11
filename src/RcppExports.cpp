@@ -6,14 +6,14 @@
 using namespace Rcpp;
 
 // psrank
-Rcpp::NumericVector psrank(Rcpp::NumericVector data, Rcpp::NumericVector group, Rcpp::NumericVector n);
+Rcpp::NumericVector psrank(Rcpp::NumericVector& data, Rcpp::NumericVector& group, Rcpp::NumericVector& n);
 RcppExport SEXP _pseudorank_psrank(SEXP dataSEXP, SEXP groupSEXP, SEXP nSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< Rcpp::NumericVector >::type data(dataSEXP);
-    Rcpp::traits::input_parameter< Rcpp::NumericVector >::type group(groupSEXP);
-    Rcpp::traits::input_parameter< Rcpp::NumericVector >::type n(nSEXP);
+    Rcpp::traits::input_parameter< Rcpp::NumericVector& >::type data(dataSEXP);
+    Rcpp::traits::input_parameter< Rcpp::NumericVector& >::type group(groupSEXP);
+    Rcpp::traits::input_parameter< Rcpp::NumericVector& >::type n(nSEXP);
     rcpp_result_gen = Rcpp::wrap(psrank(data, group, n));
     return rcpp_result_gen;
 END_RCPP

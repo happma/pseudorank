@@ -3,6 +3,7 @@ test_df <- data.frame(data = c(1,7,1,2,3,3,5.5,6,7), group = c(1,1,1,2,2,3,3,3,3
 test_df$group <- factor(test_df$group, ordered = TRUE)
 
 # test function psrank
+context("Function for Calculating Pseudo-Ranks")
 true_result <- c(1.500, 8.625, 1.500, 3.250, 5.125, 5.125, 6.625, 7.375, 8.625)
 
 test_that("function psrank", {
@@ -10,7 +11,9 @@ test_that("function psrank", {
   expect_identical(pseudorank::psrank(test_df$data, test_df$group), true_result)
 })
 
+
 # test function psrank
+context("Function for Calculating the Hettmansperger-Norton Test")
 true_result_hettmanspergerI <- 1.47888
 true_result_hettmanspergerD <- -1.47888
 

@@ -20,3 +20,12 @@ test_that("function hettmansperger_norton_test", {
   expect_equivalent(pseudorank::hettmansperger_norton_test(data~group, test_df, alternative = "decreasing")$test, true_result_hettmanspergerD, tolerance=1e-4)
   expect_equivalent(pseudorank::hettmansperger_norton_test(test_df$data, test_df$group, alternative = "decreasing")$test, true_result_hettmanspergerD, tolerance=1e-4)
 })
+
+# test function psrank custom trend
+true_result_hettmanspergerC <- 0.3335237
+test_trend <- c(1, 3, 2)
+
+test_that("function hettmansperger_norton_test custom trend", {
+  expect_equivalent(pseudorank::hettmansperger_norton_test(data~group, test_df, alternative = "custom", trend = test_trend)$test, true_result_hettmanspergerC, tolerance=1e-4)
+  expect_equivalent(pseudorank::hettmansperger_norton_test(test_df$data, test_df$group, alternative = "custom", trend = test_trend)$test, true_result_hettmanspergerC, tolerance=1e-4)
+})

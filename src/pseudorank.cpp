@@ -12,7 +12,8 @@ Rcpp::NumericVector psrank(Rcpp::NumericVector data, Rcpp::NumericVector group, 
   double N = std::accumulate(n.begin(), n.end(), 0);
   
   // Calculate the first pseudo-rank
-  result[0] = N/ngroups*1/n[group[0]-1]*1/2 + 0.5;
+  int index = group[0];
+  result[0] = N/ngroups*1/n[index-1]*1/2 + 0.5;
   
   // define the matrix for the differences between the pseudo-ranks
   NumericMatrix delta(ngroups, ngroups);
@@ -34,15 +35,15 @@ Rcpp::NumericVector psrank(Rcpp::NumericVector data, Rcpp::NumericVector group, 
   
   // Case: ties in the data
   for(int i = 0; i < length; i++){
-    
     if(data[i] == data[i+1]) {
       add = 0;
       j = i + 1;
       // sum up the incremental factor for ties
       while(data[i] == data[j]){
-        add += 1/n[group[j]-1];
+        index = group[j];
+        add += 1/n[index-1];
         j++;
-        if(j >= length) {
+        if(j == length) {
           break;
         }
       }
@@ -57,6 +58,9 @@ Rcpp::NumericVector psrank(Rcpp::NumericVector data, Rcpp::NumericVector group, 
       }
       // resume for loop where last block of ties ended
       i = j-1;
+      if(i == length - 1) {
+        break;
+      }
     }
   }
   

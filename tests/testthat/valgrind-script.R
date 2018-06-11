@@ -20,7 +20,7 @@ vg_check <- function ()
     stop ("valgrind error")
 }
 
-if (identical (Sys.getenv ("TRAVIS"), "true"))
+if (TRUE)
 {
   vg_check ()
 }

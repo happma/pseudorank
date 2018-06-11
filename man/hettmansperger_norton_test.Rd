@@ -9,10 +9,10 @@
 hettmansperger_norton_test(data, ...)
 
 \method{hettmansperger_norton_test}{numeric}(data, group,
-  alternative = c("decreasing", "increasing"), ...)
+  alternative = c("decreasing", "increasing", "custom"), trend = NULL, ...)
 
 \method{hettmansperger_norton_test}{formula}(formula, data,
-  alternative = c("decreasing", "increasing"), ...)
+  alternative = c("decreasing", "increasing", "custom"), trend = NULL, ...)
 }
 \arguments{
 \item{data}{numeric vector containing the data or a data.frame}
@@ -22,6 +22,8 @@ hettmansperger_norton_test(data, ...)
 \item{group}{ordered factor vector for the groups}
 
 \item{alternative}{either decreasing or increasing}
+
+\item{trend}{custom numeric vector indicating the trend for the custom alternative, only used if alternative = "custom"}
 
 \item{formula}{formula object}
 }

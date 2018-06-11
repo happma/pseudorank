@@ -5,7 +5,7 @@
 \title{Hettmansperger-Norton Trend Test for k-Samples}
 \usage{
 hettmansperger_norton_test_internal(data, group, alternative = c("decreasing",
-  "increasing"), formula = NULL, ...)
+  "increasing", "custom"), formula = NULL, trend = NULL, ...)
 }
 \arguments{
 \item{data}{numeric vector containing the data}
@@ -15,6 +15,8 @@ hettmansperger_norton_test_internal(data, group, alternative = c("decreasing",
 \item{alternative}{either decreasing or increasing}
 
 \item{formula}{formula object}
+
+\item{trend}{custom numeric vector indicating the trend for the custom alternative, only used if alternative = "custom"}
 
 \item{...}{further arguments are ignored}
 }

@@ -1,6 +1,7 @@
 ################################################################################
 ### File: S3method.R
-### Description: S3 generic functions to handle vectors and data.frames
+### Description: S3 generic functions to handle vectors and data.frames / formula objects
+###              for psrank and hettmansperger_norton_test
 ###
 ################################################################################
 
@@ -45,6 +46,7 @@ psrank.formula <- function(formula, data, ...){
 #' @param group ordered factor vector for the groups
 #' @param alternative either decreasing or increasing
 #' @param formula formula object
+#' @param trend custom numeric vector indicating the trend for the custom alternative, only used if alternative = "custom"
 #' @param ... further arguments are ignored
 #' @return Returns an object.
 #' @example R/example_2.txt
@@ -58,15 +60,15 @@ hettmansperger_norton_test <- function(data, ...) {
 #' @method hettmansperger_norton_test numeric
 #' @rdname hettmansperger_norton_test
 #' @keywords export
-hettmansperger_norton_test.numeric <- function(data, group, alternative = c("decreasing", "increasing"), ...) {
-  return(hettmansperger_norton_test_internal(data, group, alternative = alternative, formula = NULL, ...))
+hettmansperger_norton_test.numeric <- function(data, group, alternative = c("decreasing", "increasing", "custom"), trend = NULL, ...) {
+  return(hettmansperger_norton_test_internal(data, group, alternative = alternative, formula = NULL, trend = trend, ...))
 }  
 
 #' @method hettmansperger_norton_test formula
 #' @rdname hettmansperger_norton_test
 #' @keywords export
-hettmansperger_norton_test.formula <- function(formula, data, alternative = c("decreasing", "increasing"), ...) {
+hettmansperger_norton_test.formula <- function(formula, data, alternative = c("decreasing", "increasing", "custom"), trend = NULL, ...) {
   model <- model.frame(formula, data = data)
   colnames(model) <- c("data", "group")
-  return(hettmansperger_norton_test_internal(model$data, model$group, alternative = alternative, formula = formula, ...))
+  return(hettmansperger_norton_test_internal(model$data, model$group, alternative = alternative, formula = formula, trend = trend, ...))
 }  

@@ -42,6 +42,9 @@ Rcpp::NumericVector psrank(Rcpp::NumericVector data, Rcpp::NumericVector group, 
       while(data[i] == data[j]){
         add += 1/n[group[j]-1];
         j++;
+        if(j >= length) {
+          break;
+        }
       }
       for(int k = i; k < j; k++){
         // we need to distinguish between i > 0 and i == 0, otherwise result[i-1] not defined

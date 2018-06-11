@@ -16,13 +16,14 @@ J <- function(d) {
 #' @param group ordered factor vector for the groups
 #' @param alternative either decreasing or increasing
 #' @param formula formula object
+#' @param trend custom numeric vector indicating the trend for the custom alternative, only used if alternative = "custom"
 #' @param ... further arguments are ignored
 #' @return Returns a data.frame with the results
 #' @example R/example_2.txt
 #' @references Brunner, E., Bathke A. C. and Konietschke, F. Rank- and Pseudo-Rank Procedures in Factorial Designs - Using R and SAS. Springer Verlag. to appear.
 #' @references Hettmansperger, T. P., & Norton, R. M. (1987). Tests for patterned alternatives in k-sample problems. Journal of the American Statistical Association, 82(397), 292-299
 #' @keywords internal
-hettmansperger_norton_test_internal <- function(data, group, alternative = c("decreasing", "increasing"), formula = NULL, ...) {
+hettmansperger_norton_test_internal <- function(data, group, alternative = c("decreasing", "increasing", "custom"), formula = NULL, trend = NULL, ...) {
   
   stopifnot(is.numeric(data), is.factor(group), is.ordered(group))
   
@@ -40,6 +41,10 @@ hettmansperger_norton_test_internal <- function(data, group, alternative = c("de
          },
          increasing={
            w <- 1:a
+         },
+         custom={
+           stopifnot(is.numeric(trend), length(trend)==a)
+           w <- trend
          }
   )
   
@@ -58,6 +63,7 @@ hettmansperger_norton_test_internal <- function(data, group, alternative = c("de
   output$pHat <- pHat
   output$alternative <- alternative
   output$formula <- formula
+  output$trend <- trend
   class(output) <- "pseudorank"
   
   return(output)
@@ -74,6 +80,9 @@ print.pseudorank <- function(x, ...) {
     cat("\n")
   }
   cat("Alternative: ", x$alternative, "\n")
+  if(x$alternative == "custom") {
+    cat("Trend: ", x$trend, "\n")
+  }
   cat("Test Statistic: ", x$test, "\n")
   cat("p-Value: ", x$pValue, "\n")
   cat("\n")
@@ -92,6 +101,9 @@ summary.pseudorank <- function(object, ...) {
     cat("\n")
   }
   cat("Alternative: ", object$alternative, "\n")
+  if(object$alternative == "custom") {
+    cat("Trend: ", object$trend, "\n")
+  }
   cat("Test Statistic: ", object$test, "\n")
   cat("p-Value: ", object$pValue, "\n")
   cat("\n")

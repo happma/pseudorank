@@ -1,7 +1,6 @@
 # pseudorank
 
 [![CRANstatus](https://www.r-pkg.org/badges/version/pseudorank)](https://cran.r-project.org/package=pseudorank)
-<a href="https://www.rpackages.io/package/pseudorank"><img src="https://www.rpackages.io/badge/pseudorank.svg" /></a>
 [![](https://cranlogs.r-pkg.org/badges/pseudorank)](https://cran.r-project.org/package=pseudorank)
 [![Travis-CI Build Status](https://travis-ci.org/happma/pseudorank.svg?branch=master)](https://travis-ci.org/happma/pseudorank)
 

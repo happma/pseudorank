@@ -24,9 +24,9 @@ J <- function(d) {
 #' @references Hettmansperger, T. P., & Norton, R. M. (1987). Tests for patterned alternatives in k-sample problems. Journal of the American Statistical Association, 82(397), 292-299
 #' @keywords internal
 hettmansperger_norton_test_internal <- function(data, group, alternative = c("decreasing", "increasing", "custom"), formula = NULL, trend = NULL, ...) {
-  
+
   stopifnot(is.numeric(data), is.factor(group), is.ordered(group))
-  
+
   n <- as.numeric(as.matrix(table(group)))
   a <- length(n)
   df <- data.frame(pranks = psrank.numeric(data, group), group = group)
@@ -35,7 +35,7 @@ hettmansperger_norton_test_internal <- function(data, group, alternative = c("de
   n <- summaryBy(pranks~group,data=df, FUN = length)[, 2]
   alternative <- match.arg(alternative)
   w <- rep(1, a)
-  switch(alternative, 
+  switch(alternative,
          decreasing={
            w <- a:1
          },
@@ -47,15 +47,15 @@ hettmansperger_norton_test_internal <- function(data, group, alternative = c("de
            w <- trend
          }
   )
-  
+
   W <- diag(n)%*%(I(a) - 1/sum(n)*J(a)%*%diag(n))
   v2 <- 1/sum(n)^2*1/(sum(n)-1)*sum( (df$pranks - (sum(n)+1)/2 )^2 )
   sigmaHat2 <- sum(n)*v2*t(w)%*%W%*%diag(1/n)%*%W%*%w
-  
+
   test <- sqrt(sum(n))*t(w)%*%W%*%pHat*1/sqrt(sigmaHat2)
-  
+
   pValue <- 1 - pnorm(test)
-  
+
   output <- list()
   output$test <- test
   output$pValue <- pValue
@@ -65,9 +65,9 @@ hettmansperger_norton_test_internal <- function(data, group, alternative = c("de
   output$formula <- formula
   output$trend <- trend
   class(output) <- "pseudorank"
-  
+
   return(output)
-  
+
 }
 
 #' @keywords export

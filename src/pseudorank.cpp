@@ -3,16 +3,27 @@ using namespace Rcpp;
 
 
 // [[Rcpp::export]]
-Rcpp::NumericVector psrank(Rcpp::NumericVector &data, Rcpp::NumericVector &group, Rcpp::NumericVector &n) {
+Rcpp::NumericVector order_vec(Rcpp::NumericVector& data) {
+  Rcpp::NumericVector y(data.size());
+  std::iota(y.begin(), y.end(), 0);
+  auto comparator = [&data] (int a, int b) { return data[a] < data[b]; }; 
+  std::sort(y.begin(), y.end(), comparator);
   
+  return y;
+}
+
+
+// [[Rcpp::export]]
+Rcpp::NumericVector psrankCpp(Rcpp::NumericVector &data, Rcpp::NumericVector &group, Rcpp::NumericVector &n) {
+
   double N = data.size();
   double ngroups = n.size();
   Rcpp::NumericVector result(N);
   Rcpp::NumericVector result_ties(N);
   
+  
   // Calculate the first pseudo-rank
-  int index = group[0];
-  result[0] = N/ngroups*1/n[index-1]*1/2 + 0.5;
+  result[0] = N/ngroups*1/n[group[0]-1]*1/2 + 0.5;
   
   // define the matrix for the differences between the pseudo-ranks
   NumericMatrix delta(ngroups, ngroups);
@@ -22,7 +33,7 @@ Rcpp::NumericVector psrank(Rcpp::NumericVector &data, Rcpp::NumericVector &group
       delta(j,i) = delta(i,j);
     }
   }
-
+  
   
   // Case: no ties
   for(int i = 1; i < N; i++){
@@ -31,19 +42,18 @@ Rcpp::NumericVector psrank(Rcpp::NumericVector &data, Rcpp::NumericVector &group
   
   double add = 0;
   int j = 0;
+  int i = 0;
   result_ties = clone(result);
   
   // Case: ties in the data
-  for(int i = 0; i < N; i++){
-    //result_ties[i] = result[i];
+  while(i < N - 1){
     
     if(data[i] == data[i+1]) {
       add = 0;
       j = i + 1;
       // sum up the incremental factor for ties
       while(data[i] == data[j]){
-        index = group[j];
-        add += 1/n[index-1];
+        add += 1/n[group[j]-1];
         j++;
         if(j == N) {
           break;
@@ -60,13 +70,10 @@ Rcpp::NumericVector psrank(Rcpp::NumericVector &data, Rcpp::NumericVector &group
       }
       // resume for loop where last block of ties ended
       i = j-1;
-      if(i == N - 1) {
-        break;
-      }
-    }
+    } // end if
+    i++;
   }
   
   
   return result_ties;
 }
-

@@ -33,8 +33,8 @@ df <- data.frame(data = c(rnorm(40, 3, 1), rnorm(40, 2, 1), rnorm(20, 1, 1)),
 df$group <- factor(df$group, ordered = TRUE)
 
 # you can either test for a decreasing or increasing trend
-hettmansperger_norton_test(df$data, df$group, alternative="decreasing")
-hettmansperger_norton_test(df$data, df$group, alternative="increasing")
+#hettmansperger_norton_test(df$data, df$group, alternative="decreasing")
+#hettmansperger_norton_test(df$data, df$group, alternative="increasing")
 }
 \references{
 Brunner, E., Bathke A. C. and Konietschke, F. Rank- and Pseudo-Rank Procedures in Factorial Designs - Using R and SAS. Springer Verlag. to appear.

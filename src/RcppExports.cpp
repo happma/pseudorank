@@ -5,22 +5,34 @@
 
 using namespace Rcpp;
 
-// psrank
-Rcpp::NumericVector psrank(Rcpp::NumericVector& data, Rcpp::NumericVector& group, Rcpp::NumericVector& n);
-RcppExport SEXP _pseudorank_psrank(SEXP dataSEXP, SEXP groupSEXP, SEXP nSEXP) {
+// order_vec
+Rcpp::NumericVector order_vec(Rcpp::NumericVector& data);
+RcppExport SEXP _pseudorank_order_vec(SEXP dataSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< Rcpp::NumericVector& >::type data(dataSEXP);
+    rcpp_result_gen = Rcpp::wrap(order_vec(data));
+    return rcpp_result_gen;
+END_RCPP
+}
+// psrankCpp
+Rcpp::NumericVector psrankCpp(Rcpp::NumericVector& data, Rcpp::NumericVector& group, Rcpp::NumericVector& n);
+RcppExport SEXP _pseudorank_psrankCpp(SEXP dataSEXP, SEXP groupSEXP, SEXP nSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
     Rcpp::traits::input_parameter< Rcpp::NumericVector& >::type data(dataSEXP);
     Rcpp::traits::input_parameter< Rcpp::NumericVector& >::type group(groupSEXP);
     Rcpp::traits::input_parameter< Rcpp::NumericVector& >::type n(nSEXP);
-    rcpp_result_gen = Rcpp::wrap(psrank(data, group, n));
+    rcpp_result_gen = Rcpp::wrap(psrankCpp(data, group, n));
     return rcpp_result_gen;
 END_RCPP
 }
 
 static const R_CallMethodDef CallEntries[] = {
-    {"_pseudorank_psrank", (DL_FUNC) &_pseudorank_psrank, 3},
+    {"_pseudorank_order_vec", (DL_FUNC) &_pseudorank_order_vec, 1},
+    {"_pseudorank_psrankCpp", (DL_FUNC) &_pseudorank_psrankCpp, 3},
     {NULL, NULL, 0}
 };
 

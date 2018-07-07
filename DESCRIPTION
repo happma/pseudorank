@@ -1,7 +1,7 @@
 Package: pseudorank
 Title: Pseudo-Ranks
-Version: 0.1.0
-Date: 2018-06-08
+Version: 0.2.1
+Date: 2018-07-07
 Authors@R: c(person("Martin Happ", role = c("aut", "cre"),
                       email = "martin.happ@aon.at",
                       comment = c(ORCID = "0000-0003-0009-2665")),
@@ -16,6 +16,7 @@ LazyData: true
 Depends: R (>= 3.4.0)
 Imports: Rcpp (>= 0.12.16), doBy
 LinkingTo: Rcpp
+SystemRequirements: C++11
 URL: http://github.com/happma/pseudorank
 BugReports: http://github.com/happma/pseudorank/issues
 RoxygenNote: 6.0.1

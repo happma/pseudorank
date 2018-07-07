@@ -40,7 +40,4 @@ psrank(df$data,df$group)
 # that is, in data~group*group2 only 'group' will be used
 psrank(data~group,df)
 }
-\seealso{
-\code{\link{rank}}.
-}
 \keyword{export}

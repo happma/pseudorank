@@ -4,7 +4,7 @@ language: R
 sudo: false
 cache: packages
 
-r_check_args: --as-cran --use-valgrind
+r_check_args: '--as-cran --use-valgrind'
 
 env:
   - VALGRIND_OPTS='--leak-check=full --track-origins=yes'
@@ -13,3 +13,9 @@ addons:
   apt:
     packages:
       - valgrind
+      
+r_packages:
+  - covr
+
+after_success:
+  - Rscript -e 'library(covr); codecov()'

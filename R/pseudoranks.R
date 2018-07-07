@@ -4,6 +4,11 @@
 ###
 ################################################################################
 
+# ps_rank <- function(data, group, n) {
+#   ord <- pseudorank::order_vec(data) + 1
+#   #sortback <- match(data, data[ord])
+#   return(pseudorank::psrankCpp(data[ord], group[ord],n))
+# }
 
 #globalVariables("_pseudoranks_psrank")
 
@@ -18,16 +23,19 @@
 recursiveCalculation <- function(data, group) {
 
   stopifnot(is.numeric(data), is.factor(group))
+  group <- as.numeric(group)
+  
   n <- as.numeric(as.matrix(table(group)))
 
+  # balanced group sizes
   if( identical(n,rep(n[1],length(n)))  ) {
     return(rank(data, ties.method = "average"))
-  } else {
-    id <- 1:length(data)
-    df <- matrix(c(data = data, group = group, id = id), ncol=3)
-    df <- df[order(df[, 1]),]
-    prank <- .Call(`_pseudorank_psrank`, df[, 1], df[, 2], n)
-    sortback <- match(id, df[, 3])
+  }
+  else {
+    ord <- .Call(`_pseudorank_order_vec`, data) + 1
+    data_sorted <- data[ord]
+    sortback <- match(data, data_sorted)
+    prank <- .Call(`_pseudorank_psrankCpp`, data_sorted, group[ord], n)
     return(prank[sortback])
   }
 }
@@ -37,26 +45,35 @@ recursiveCalculation <- function(data, group) {
 ## ----------------------------------
 # pairwise <- function(data, group, n){
 #   group <- factor(group, labels = 1:length(n))
-#   df <- data.frame(data = data, group = group, id = 1:sum(n))
-#   g <- levels(group)
-#   df$group <- factor(df$group, labels = 1:length(n))
+#   df <- data.table(data = data, group = group, id = 1:sum(n))
+#   a <- length(n)
+#   
+#   df$group <- factor(df$group, labels = 1:a)
 #   df$group <- as.numeric(df$group)
 #   prank <- rep(0, length(data))
-#   for(i in 1:length(n)) {
-#     iset <- subset(df, df$group == i)$data
-#     internal <- rank(iset, ties.method = "average")
-#     for(j in 1:n[i]) {
-#       prank[cumsum(c(0,n))[i]+j] <- (internal[j]-1/2)*1/n[i]
-#       for(k in setdiff(1:length(n),i)) {
-#         pset <- subset(df, df$group==i | df$group == k)$data
-#         index <- which(pset == iset[j])
-#         prank[cumsum(c(0,n))[i]+j] <- 1/n[k]*(rank(pset, ties.method = "average")[index] - internal[j]) + prank[cumsum(c(0,n))[i]+j] 
-#       }
-#       prank[cumsum(c(0,n))[i]+j] <- prank[cumsum(c(0,n))[i]+j]*sum(n)/length(n) + 1/2
+#   
+#   L <- list(as.matrix(diag(a), ncol = a))
+#   tmp <- df
+#   
+#   for(i in 1:a) {
+#     L[[i]] <- as.matrix(diag(sum(n)), ncol = sum(n))*0
+#     for(j in 1:a) {
+#       tmp <- copy(df)
+#       tmp[group %in% c(i,j), data:=rank(data, ties.method = "average")] 
+#       L[[i]][, j] <- copy(tmp[, data])
 #     }
 #   }
+#   
+#   for(i in 1:sum(n)) {
+#     g <- df$group[i]
+#     prank[i] <- 1/n[g]*(L[[g]][i, g]-1/2)
+#     for(j in 1:a) {
+#       prank[i] <- prank[i]+1/n[j]*(L[[j]][i, g] - L[[g]][i, g])
+#     }
+#   }
+#   prank <- prank*sum(n)/a+1/2
 #   return(prank)
-# }
+# } 
 # 
 # 
 # AB <- function(data, group){

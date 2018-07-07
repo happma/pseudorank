@@ -3,6 +3,7 @@
 [![CRANstatus](https://www.r-pkg.org/badges/version/pseudorank)](https://cran.r-project.org/package=pseudorank)
 [![](https://cranlogs.r-pkg.org/badges/pseudorank)](https://cran.r-project.org/package=pseudorank)
 [![Travis-CI Build Status](https://travis-ci.org/happma/pseudorank.svg?branch=master)](https://travis-ci.org/happma/pseudorank)
+[![codecov](https://codecov.io/gh/happma/pseudorank/branch/master/graph/badge.svg)](https://codecov.io/gh/happma/pseudorank)
 
 This R package provides a function written in C++ to calculate pseudo-ranks in R and the Hettmansperger-Norton test with pseudo-ranks instead of ranks.
 For a definition and discussion of pseudo-ranks, see for example 

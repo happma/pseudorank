@@ -18,24 +18,3 @@ test_that("function psrank equal group sizes", {
   expect_identical(pseudorank::psrank(data~group, test_df), rank(test_df$data, ties.method = "average"))
   expect_identical(pseudorank::psrank(test_df$data, test_df$group), rank(test_df$data, ties.method = "average"))
 })
-
-# test function psrank
-context("Function for Calculating the Hettmansperger-Norton Test")
-true_result_hettmanspergerI <- 1.47888
-true_result_hettmanspergerD <- -1.47888
-
-test_that("function hettmansperger_norton_test", {
-  expect_equivalent(pseudorank::hettmansperger_norton_test(data~group, test_df, alternative = "increasing")$test, true_result_hettmanspergerI, tolerance=1e-4)
-  expect_equivalent(pseudorank::hettmansperger_norton_test(test_df$data, test_df$group, alternative = "increasing")$test, true_result_hettmanspergerI, tolerance=1e-4)
-  expect_equivalent(pseudorank::hettmansperger_norton_test(data~group, test_df, alternative = "decreasing")$test, true_result_hettmanspergerD, tolerance=1e-4)
-  expect_equivalent(pseudorank::hettmansperger_norton_test(test_df$data, test_df$group, alternative = "decreasing")$test, true_result_hettmanspergerD, tolerance=1e-4)
-})
-
-# test function psrank custom trend
-true_result_hettmanspergerC <- 0.3335237
-test_trend <- c(1, 3, 2)
-
-test_that("function hettmansperger_norton_test custom trend", {
-  expect_equivalent(pseudorank::hettmansperger_norton_test(data~group, test_df, alternative = "custom", trend = test_trend)$test, true_result_hettmanspergerC, tolerance=1e-4)
-  expect_equivalent(pseudorank::hettmansperger_norton_test(test_df$data, test_df$group, alternative = "custom", trend = test_trend)$test, true_result_hettmanspergerC, tolerance=1e-4)
-})

@@ -11,6 +11,8 @@ test_that("function hettmansperger_norton_test", {
   expect_equivalent(pseudorank::hettmansperger_norton_test(test_df$data, test_df$group, alternative = "increasing")$test, true_result_hettmanspergerI, tolerance=1e-4)
   expect_equivalent(pseudorank::hettmansperger_norton_test(data~group, test_df, alternative = "decreasing")$test, true_result_hettmanspergerD, tolerance=1e-4)
   expect_equivalent(pseudorank::hettmansperger_norton_test(test_df$data, test_df$group, alternative = "decreasing")$test, true_result_hettmanspergerD, tolerance=1e-4)
+  expect_output(print(pseudorank::hettmansperger_norton_test(test_df$data, test_df$group, alternative = "decreasing")))
+  expect_output(summary(pseudorank::hettmansperger_norton_test(test_df$data, test_df$group, alternative = "decreasing")))
 })
 
 # test function psrank custom trend

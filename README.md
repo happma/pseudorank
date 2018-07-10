@@ -23,11 +23,11 @@ library(pseudorank)
 ```
 In case of missing values there are three options to choose from. These are the
 same as for the function 'rank' or 'sort' from base R. It is recommended to use
-'na.last = NA' to remove the NAs. If the NAs are kept, then the pseudo-ranks from
-those NAs depend on the order they appear in the data. The order does not matter
-only if the groups containing missing values have the same sample size. See the following
-R Code for an example of this problem where observation 1 and 4 are interchanged.
-Here, the pseudo-ranks for those two observations is different, all other pseudo-ranks remain
+'na.last = NA' to remove the NAs. If the NAs are kept, they can either be put at the beginning
+or the end of your data, then the pseudo-ranks from those NAs depend on the order they appear in the data.
+The order does not matter only if the groups containing missing values have the same sample size.
+See the following R Code for an example of this problem where observation 1 and 4 are interchanged.
+Here, the pseudo-ranks for those two observations are different, all other pseudo-ranks remain
 unchanged.
 
 ``` r

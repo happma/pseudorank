@@ -1,6 +1,5 @@
 useDynLib(pseudorank, .registration=TRUE)
-export(psrank, psrank.numeric, psrank.formula)
-export(psrank, psrank.numeric, psrank.formula, hettmansperger_norton_test, hettmansperger_norton_test.numeric, hettmansperger_norton_test.formula)
+export(psrank, hettmansperger_norton_test)
 S3method(psrank, numeric)
 S3method(psrank, formula)
 S3method(print, pseudorank)

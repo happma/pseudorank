@@ -6,20 +6,22 @@
 \alias{psrank.formula}
 \title{Calculation of Pseudo-Ranks}
 \usage{
-psrank(data, ...)
+psrank(x, ...)
 
-\method{psrank}{numeric}(data, group, ...)
+\method{psrank}{numeric}(x, y, ...)
 
 \method{psrank}{formula}(formula, data, ...)
 }
 \arguments{
-\item{data}{numerical vector or data.frame}
+\item{x}{vector containing the observations}
 
 \item{...}{further arguments}
 
-\item{group}{vector coding for the groups}
+\item{y}{vector specifiying the group to which the observations from the x vector belong to}
 
 \item{formula}{formula object}
+
+\item{data}{data.frame containing the variables in the formula (observations and group)}
 }
 \value{
 Returns a numerical vector containing the pseudo-ranks

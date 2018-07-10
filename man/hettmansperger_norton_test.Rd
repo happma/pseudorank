@@ -6,26 +6,28 @@
 \alias{hettmansperger_norton_test.formula}
 \title{Hettmansperger-Norton Trend Test for k-Samples}
 \usage{
-hettmansperger_norton_test(data, ...)
+hettmansperger_norton_test(x, ...)
 
-\method{hettmansperger_norton_test}{numeric}(data, group,
+\method{hettmansperger_norton_test}{numeric}(x, y,
   alternative = c("decreasing", "increasing", "custom"), trend = NULL, ...)
 
 \method{hettmansperger_norton_test}{formula}(formula, data,
   alternative = c("decreasing", "increasing", "custom"), trend = NULL, ...)
 }
 \arguments{
-\item{data}{numeric vector containing the data or a data.frame}
+\item{x}{vector containing the observations}
 
 \item{...}{further arguments are ignored}
 
-\item{group}{ordered factor vector for the groups}
+\item{y}{vector specifiying the group to which the observations from the x vector belong to}
 
 \item{alternative}{either decreasing (trend k, k-1, ..., 1) or increasing (1, 2, ..., k) or custom (then argument trend must be used)}
 
 \item{trend}{custom numeric vector indicating the trend for the custom alternative, only used if alternative = "custom"}
 
 \item{formula}{formula object}
+
+\item{data}{data.frame containing the variables in the formula (observations and group)}
 }
 \value{
 Returns an object.
@@ -39,9 +41,10 @@ df <- data.frame(data = c(rnorm(40, 3, 1), rnorm(40, 2, 1), rnorm(20, 1, 1)),
   group = c(rep(1,40),rep(2,40),rep(3,20)))
 df$group <- factor(df$group, ordered = TRUE)
 
-# you can either test for a decreasing or increasing trend
-#hettmansperger_norton_test(df$data, df$group, alternative="decreasing")
-#hettmansperger_norton_test(df$data, df$group, alternative="increasing")
+# you can either test for a decreasing, increasing or custom trend
+hettmansperger_norton_test(df$data, df$group, alternative="decreasing")
+hettmansperger_norton_test(df$data, df$group, alternative="increasing")
+hettmansperger_norton_test(df$data, df$group, alternative="custom", trend = c(1, 3, 2))
 }
 \references{
 Brunner, E., Bathke A. C. and Konietschke, F. Rank- and Pseudo-Rank Procedures in Factorial Designs - Using R and SAS. Springer Verlag. to appear.

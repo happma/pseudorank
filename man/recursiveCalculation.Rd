@@ -17,7 +17,4 @@ Returns a numerical vector containing the pseudo-ranks
 \description{
 Calculation of (mid) pseudo-ranks of a sample. In case of ties (i.e. equal values), the average of min pseudo-rank and max-pseudor-rank are taken (similar to rank with ties.method="average").
 }
-\seealso{
-\code{\link{rank}}.
-}
 \keyword{internal}

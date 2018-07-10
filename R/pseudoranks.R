@@ -4,13 +4,6 @@
 ###
 ################################################################################
 
-# ps_rank <- function(data, group, n) {
-#   ord <- pseudorank::order_vec(data) + 1
-#   #sortback <- match(data, data[ord])
-#   return(pseudorank::psrankCpp(data[ord], group[ord],n))
-# }
-
-#globalVariables("_pseudoranks_psrank")
 
 #' Calculation of Pseudo-Ranks
 #'
@@ -18,15 +11,12 @@
 #' @param data numerical vector
 #' @param group vector coding for the groups
 #' @return Returns a numerical vector containing the pseudo-ranks
-#' @seealso \code{\link{rank}}.
 #' @keywords internal
 recursiveCalculation <- function(data, group) {
 
   stopifnot(is.numeric(data), is.factor(group))
-  group <- as.numeric(group)
+  n <- table(group)
   
-  n <- as.numeric(as.matrix(table(group)))
-
   # balanced group sizes
   if( identical(n,rep(n[1],length(n)))  ) {
     return(rank(data, ties.method = "average"))
@@ -35,8 +25,7 @@ recursiveCalculation <- function(data, group) {
     ord <- .Call(`_pseudorank_order_vec`, data) + 1
     data_sorted <- data[ord]
     sortback <- match(data, data_sorted)
-    prank <- .Call(`_pseudorank_psrankCpp`, data_sorted, group[ord], n)
-    return(prank[sortback])
+    return(.Call(`_pseudorank_psrankCpp`, data_sorted, group[ord], n)[sortback])
   }
 }
 

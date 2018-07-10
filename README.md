@@ -21,6 +21,33 @@ if (!requireNamespace("devtools", quietly = TRUE)) {
 devtools::install_github("happma/pseudorank")
 library(pseudorank)
 ```
+In case of missing values there are three options to choose from. These are the
+same as for the function 'rank' or 'sort' from base R. It is recommended to use
+'na.last = NA' to remove the NAs. If the NAs are kept, then the pseudo-ranks from
+those NAs depend on the order they appear in the data. The order does not matter
+only if the groups containing missing values have the same sample size. See the following
+R Code for an example of this problem where observation 1 and 4 are interchanged.
+Here, the pseudo-ranks for those two observations is different, all other pseudo-ranks remain
+unchanged.
+
+``` r
+data = c(NA,7,1,NA,3,3,5.5,6,NA, 3, 1)
+group =  as.factor(c(1,1,1,2,2,2,3,3,3,1,3))
+
+# Variant 1: keep NAs and put them last
+psrank(data, group, na.last = TRUE)
+
+# we change the order of observation 1 and 4 (both NAs)
+group =  as.factor(c(2,1,1,1,2,2,3,3,3,1,3))
+psrank(data, group, na.last = TRUE)
+
+# Variant 2: keep NAs and put them first
+psrank(data, group, na.last = FALSE)
+
+# Variant 3: remove Nas (recommended)
+psrank(data, group, na.last = NA)
+
+```
 
 ## Calculating Pseudo-Ranks
 

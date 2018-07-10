@@ -27,7 +27,7 @@ psrank <- function(x, ...){
 #' @method psrank numeric
 #' @rdname psrank
 #' @keywords export
-psrank.numeric <- function(x, y, na.last = TRUE, ...){
+psrank.numeric <- function(x, y, na.last = NA, ...){
   stopifnot(na.last %in% c(TRUE, FALSE, NA))
   recursiveCalculation(x, y, na.last)
 }
@@ -35,7 +35,7 @@ psrank.numeric <- function(x, y, na.last = TRUE, ...){
 #' @method psrank formula
 #' @rdname psrank
 #' @keywords export
-psrank.formula <- function(formula, data, na.last = TRUE, ...){
+psrank.formula <- function(formula, data, na.last = NA, ...){
   stopifnot(na.last %in% c(TRUE, FALSE, NA))
   df <- model.frame(formula, data)
   recursiveCalculation(df[, 1], df[, 2], na.last)

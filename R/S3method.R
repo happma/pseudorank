@@ -14,6 +14,7 @@
 #' @param y vector specifiying the group to which the observations from the x vector belong to
 #' @param data data.frame containing the variables in the formula (observations and group)
 #' @param formula formula object
+#' @param na.last for controlling the treatment of NAs. If TRUE, missing values in the data are put last; if FALSE, they are put first; if NA, they are removed.
 #' @param ... further arguments
 #' @return Returns a numerical vector containing the pseudo-ranks
 #' @rdname psrank
@@ -26,16 +27,18 @@ psrank <- function(x, ...){
 #' @method psrank numeric
 #' @rdname psrank
 #' @keywords export
-psrank.numeric <- function(x, y, ...){
-  recursiveCalculation(x, y)
+psrank.numeric <- function(x, y, na.last = TRUE, ...){
+  stopifnot(na.last %in% c(TRUE, FALSE, NA))
+  recursiveCalculation(x, y, na.last)
 }
 
 #' @method psrank formula
 #' @rdname psrank
 #' @keywords export
-psrank.formula <- function(formula, data, ...){
+psrank.formula <- function(formula, data, na.last = TRUE, ...){
+  stopifnot(na.last %in% c(TRUE, FALSE, NA))
   df <- model.frame(formula, data)
-  recursiveCalculation(df[, 1], df[, 2])
+  recursiveCalculation(df[, 1], df[, 2], na.last)
 }
 
 

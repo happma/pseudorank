@@ -8,9 +8,9 @@
 \usage{
 psrank(x, ...)
 
-\method{psrank}{numeric}(x, y, ...)
+\method{psrank}{numeric}(x, y, na.last = TRUE, ...)
 
-\method{psrank}{formula}(formula, data, ...)
+\method{psrank}{formula}(formula, data, na.last = TRUE, ...)
 }
 \arguments{
 \item{x}{vector containing the observations}
@@ -18,6 +18,8 @@ psrank(x, ...)
 \item{...}{further arguments}
 
 \item{y}{vector specifiying the group to which the observations from the x vector belong to}
+
+\item{na.last}{for controlling the treatment of NAs. If TRUE, missing values in the data are put last; if FALSE, they are put first; if NA, they are removed.}
 
 \item{formula}{formula object}
 

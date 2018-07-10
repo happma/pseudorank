@@ -12,16 +12,31 @@
 #' @param group vector coding for the groups
 #' @return Returns a numerical vector containing the pseudo-ranks
 #' @keywords internal
-recursiveCalculation <- function(data, group) {
-
+recursiveCalculation <- function(data, group, na.last) {
+  
   stopifnot(is.numeric(data), is.factor(group))
   n <- table(group)
   
   # balanced group sizes
   if( identical(n,rep(n[1],length(n)))  ) {
-    return(rank(data, ties.method = "average"))
+    return(rank(data, ties.method = "average", na.last = na.last))
   }
   else {
+    if(sum(is.na(data)) > 0) {
+      nas <- which(is.na(data))
+      
+      if(is.na(na.last)) {
+        data <- data[-nas]
+        group <- group[-nas]
+      } else if(na.last == TRUE) {
+        m <- max(data, na.rm = TRUE)
+        data[nas] <- (m+1):(m+length(nas))
+      } else if(na.last == FALSE) {
+        m <- min(data, na.rm = TRUE)
+        data[nas] <- (m-1):(m-length(nas))
+      } 
+    }
+    
     ord <- .Call(`_pseudorank_order_vec`, data) + 1
     data_sorted <- data[ord]
     sortback <- match(data, data_sorted)

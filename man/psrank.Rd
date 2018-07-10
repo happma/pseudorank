@@ -8,9 +8,9 @@
 \usage{
 psrank(x, ...)
 
-\method{psrank}{numeric}(x, y, na.last = TRUE, ...)
+\method{psrank}{numeric}(x, y, na.last = NA, ...)
 
-\method{psrank}{formula}(formula, data, na.last = TRUE, ...)
+\method{psrank}{formula}(formula, data, na.last = NA, ...)
 }
 \arguments{
 \item{x}{vector containing the observations}

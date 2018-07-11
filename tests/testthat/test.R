@@ -41,3 +41,10 @@ test_that("function psrank missing values", {
   expect_equivalent(pseudorank::psrank(test_df$data, test_df$group, na.last = FALSE), result_FALSE, tolerance=1e-04)
   expect_equivalent(pseudorank::psrank(test_df$data, test_df$group, na.last = NA), result_NA, tolerance=1e-04)
 })
+
+
+df1 <- data.frame(data = c(1,2,2,3,NA), group = as.factor(c(1,1,2,2,3)))
+
+test_that("function psrank missing values: level dropped", {
+  expect_equivalent(pseudorank::psrank(df1$data, df1$group, na.last = NA), rank(df1$data, ties.method="average", na.last = NA), tolerance=1e-04)
+})

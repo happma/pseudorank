@@ -37,7 +37,7 @@ psrank.numeric <- function(x, y, na.last = NA, ...){
 #' @keywords export
 psrank.formula <- function(formula, data, na.last = NA, ...){
   stopifnot(na.last %in% c(TRUE, FALSE, NA))
-  df <- model.frame(formula, data)
+  df <- model.frame(formula, data, na.action = NULL)
   recursiveCalculation(df[, 1], df[, 2], na.last)
 }
 

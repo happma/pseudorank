@@ -13,16 +13,15 @@
 #' @return Returns a numerical vector containing the pseudo-ranks
 #' @keywords internal
 recursiveCalculation <- function(data, group, na.last) {
-  
+
   stopifnot(is.numeric(data), is.factor(group))
   n <- table(group)
-  
+
   # balanced group sizes
   if( identical(n,rep(n[1],length(n)))  ) {
     return(rank(data, ties.method = "average", na.last = na.last))
   }
   else {
-    
     # case: missing values in the data
     if(sum(is.na(data)) > 0) {
       nas <- which(is.na(data))
@@ -30,7 +29,7 @@ recursiveCalculation <- function(data, group, na.last) {
       # variant 1: remove NAs
       if(is.na(na.last)) {
         data <- data[-nas]
-        group <- group[-nas]
+        group <- droplevels(group[-nas])
         # group sizes need to be adjusted because NAs were removed
         n <- table(group)
       }

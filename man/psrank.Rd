@@ -26,10 +26,10 @@ psrank(x, ...)
 \item{data}{data.frame containing the variables in the formula (observations and group)}
 }
 \value{
-Returns a numerical vector containing the pseudo-ranks
+Returns a numerical vector containing the pseudo-ranks.
 }
 \description{
-Calculation of (mid) pseudo-ranks of a sample. In case of ties (i.e. equal values), the average of min pseudo-rank and max-pseudor-rank are taken (similar to rank with ties.method="average").
+Calculation of (mid) pseudo-ranks of a sample. In case of ties (i.e. equal values), the average of min pseudo-ranks and max-pseudo-ranks are taken (similar to rank with ties.method="average").
 }
 \examples{
 df <- data.frame(data = round(rnorm(100)), group = c(rep(1,40),rep(2,40),rep(3,20)))

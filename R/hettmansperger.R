@@ -15,6 +15,7 @@ J <- function(d) {
 #' @param data numeric vector containing the data
 #' @param group ordered factor vector for the groups
 #' @param alternative either decreasing or increasing
+#' @param na.rm a logical value indicating if NA values should be removed
 #' @param formula formula object
 #' @param trend custom numeric vector indicating the trend for the custom alternative, only used if alternative = "custom"
 #' @param ... further arguments are ignored
@@ -23,9 +24,21 @@ J <- function(d) {
 #' @references Brunner, E., Bathke A. C. and Konietschke, F. Rank- and Pseudo-Rank Procedures in Factorial Designs - Using R and SAS. Springer Verlag. to appear.
 #' @references Hettmansperger, T. P., & Norton, R. M. (1987). Tests for patterned alternatives in k-sample problems. Journal of the American Statistical Association, 82(397), 292-299
 #' @keywords internal
-hettmansperger_norton_test_internal <- function(data, group, alternative = c("decreasing", "increasing", "custom"), formula = NULL, trend = NULL, ...) {
+hettmansperger_norton_test_internal <- function(data, group, na.rm, alternative = c("decreasing", "increasing", "custom"), formula = NULL, trend = NULL, ...) {
 
-  stopifnot(is.numeric(data), is.factor(group), is.ordered(group))
+  stopifnot(is.numeric(data), is.factor(group), is.ordered(group), is.logical(na.rm))
+  
+  if(sum(is.na(data)) > 0) {
+    if(na.rm) {
+      # remove NAs
+      nas <- which(is.na(data))
+      data <- data[-nas]
+      group <- group[-nas]
+    } else {
+      stop("There are missing values in your data. They can be omitted by choosing 'na.rm = TRUE'.")
+    }
+
+  }
 
   n <- as.numeric(as.matrix(table(group)))
   a <- length(n)

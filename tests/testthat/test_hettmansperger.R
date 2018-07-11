@@ -28,3 +28,18 @@ test_that("function hettmansperger_norton_test custom trend", {
   expect_output(summary(hettmansperger_norton_test(formula = data~group, data = test_df, alternative = "custom", trend = test_trend)))
   expect_output(print(hettmansperger_norton_test(formula = data~group, data = test_df, alternative = "custom", trend = test_trend)))
 })
+
+
+test_df <- data.frame(data = c(1,7,1,2,3,3,5.5,6,7), group = c(1,1,1,2,2,3,3,3,3))
+test_df$group <- factor(test_df$group, ordered = TRUE)
+df2 <- test_df
+df2[1, 1] <- NA
+df3 <- test_df[-1, ]
+
+true_result <- 0.9259461
+
+test_that("function hettmansperger_norton_test missing values", {
+  expect_equivalent(pseudorank::hettmansperger_norton_test(df2$data, df2$group, alternative = "increasing", na.rm=TRUE)$test, true_result, tolerance = 1e-04)
+  expect_equivalent(pseudorank::hettmansperger_norton_test(df3$data, df3$group, alternative = "increasing")$test, true_result, tolerance = 1e-04)
+  expect_error(pseudorank::hettmansperger_norton_test(df2$data, df2$group, alternative = "increasing"))
+})

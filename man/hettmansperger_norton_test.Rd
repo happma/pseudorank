@@ -8,10 +8,10 @@
 \usage{
 hettmansperger_norton_test(x, ...)
 
-\method{hettmansperger_norton_test}{numeric}(x, y,
+\method{hettmansperger_norton_test}{numeric}(x, y, na.rm = FALSE,
   alternative = c("decreasing", "increasing", "custom"), trend = NULL, ...)
 
-\method{hettmansperger_norton_test}{formula}(formula, data,
+\method{hettmansperger_norton_test}{formula}(formula, data, na.rm = FALSE,
   alternative = c("decreasing", "increasing", "custom"), trend = NULL, ...)
 }
 \arguments{
@@ -21,7 +21,9 @@ hettmansperger_norton_test(x, ...)
 
 \item{y}{vector specifiying the group to which the observations from the x vector belong to}
 
-\item{alternative}{either decreasing (trend k, k-1, ..., 1) or increasing (1, 2, ..., k) or custom (then argument trend must be used)}
+\item{na.rm}{a logical value indicating if NA values should be removed}
+
+\item{alternative}{either decreasing (trend k, k-1, ..., 1) or increasing (1, 2, ..., k) or custom (then argument trend must be specified)}
 
 \item{trend}{custom numeric vector indicating the trend for the custom alternative, only used if alternative = "custom"}
 

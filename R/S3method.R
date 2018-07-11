@@ -9,14 +9,14 @@
 
 #' Calculation of Pseudo-Ranks
 #'
-#' @description Calculation of (mid) pseudo-ranks of a sample. In case of ties (i.e. equal values), the average of min pseudo-rank and max-pseudor-rank are taken (similar to rank with ties.method="average").
+#' @description Calculation of (mid) pseudo-ranks of a sample. In case of ties (i.e. equal values), the average of min pseudo-ranks and max-pseudo-ranks are taken (similar to rank with ties.method="average").
 #' @param x vector containing the observations
 #' @param y vector specifiying the group to which the observations from the x vector belong to
 #' @param data data.frame containing the variables in the formula (observations and group)
 #' @param formula formula object
 #' @param na.last for controlling the treatment of NAs. If TRUE, missing values in the data are put last; if FALSE, they are put first; if NA, they are removed.
 #' @param ... further arguments
-#' @return Returns a numerical vector containing the pseudo-ranks
+#' @return Returns a numerical vector containing the pseudo-ranks.
 #' @rdname psrank
 #' @example R/example_1.txt
 #' @keywords export
@@ -50,7 +50,8 @@ psrank.formula <- function(formula, data, na.last = NA, ...){
 #' @param y vector specifiying the group to which the observations from the x vector belong to
 #' @param data data.frame containing the variables in the formula (observations and group)
 #' @param formula formula object
-#' @param alternative either decreasing (trend k, k-1, ..., 1) or increasing (1, 2, ..., k) or custom (then argument trend must be used)
+#' @param na.rm a logical value indicating if NA values should be removed
+#' @param alternative either decreasing (trend k, k-1, ..., 1) or increasing (1, 2, ..., k) or custom (then argument trend must be specified)
 #' @param trend custom numeric vector indicating the trend for the custom alternative, only used if alternative = "custom"
 #' @param ... further arguments are ignored
 #' @return Returns an object.
@@ -65,15 +66,15 @@ hettmansperger_norton_test <- function(x, ...) {
 #' @method hettmansperger_norton_test numeric
 #' @rdname hettmansperger_norton_test
 #' @keywords export
-hettmansperger_norton_test.numeric <- function(x, y, alternative = c("decreasing", "increasing", "custom"), trend = NULL, ...) {
-  return(hettmansperger_norton_test_internal(x, y, alternative = alternative, formula = NULL, trend = trend, ...))
+hettmansperger_norton_test.numeric <- function(x, y, na.rm = FALSE, alternative = c("decreasing", "increasing", "custom"), trend = NULL, ...) {
+  return(hettmansperger_norton_test_internal(x, y, na.rm, alternative = alternative, formula = NULL, trend = trend, ...))
 }
 
 #' @method hettmansperger_norton_test formula
 #' @rdname hettmansperger_norton_test
 #' @keywords export
-hettmansperger_norton_test.formula <- function(formula, data, alternative = c("decreasing", "increasing", "custom"), trend = NULL, ...) {
+hettmansperger_norton_test.formula <- function(formula, data, na.rm = FALSE, alternative = c("decreasing", "increasing", "custom"), trend = NULL, ...) {
   model <- model.frame(formula, data = data)
   colnames(model) <- c("data", "group")
-  return(hettmansperger_norton_test_internal(model$data, model$group, alternative = alternative, formula = formula, trend = trend, ...))
+  return(hettmansperger_norton_test_internal(model$data, model$group, na.rm, alternative = alternative, formula = formula, trend = trend, ...))
 }

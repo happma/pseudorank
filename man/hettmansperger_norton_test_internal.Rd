@@ -4,13 +4,16 @@
 \alias{hettmansperger_norton_test_internal}
 \title{Hettmansperger-Norton Trend Test for k-Samples}
 \usage{
-hettmansperger_norton_test_internal(data, group, alternative = c("decreasing",
-  "increasing", "custom"), formula = NULL, trend = NULL, ...)
+hettmansperger_norton_test_internal(data, group, na.rm,
+  alternative = c("decreasing", "increasing", "custom"), formula = NULL,
+  trend = NULL, ...)
 }
 \arguments{
 \item{data}{numeric vector containing the data}
 
 \item{group}{ordered factor vector for the groups}
+
+\item{na.rm}{a logical value indicating if NA values should be removed}
 
 \item{alternative}{either decreasing or increasing}
 

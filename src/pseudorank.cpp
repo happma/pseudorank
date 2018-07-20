@@ -104,7 +104,7 @@ Rcpp::NumericVector psrankMinCpp(Rcpp::NumericVector &data, Rcpp::NumericVector 
   for(int i = 1; i < N; i++){
     result[i] = result[i-1] + delta(group[i-1]-1, group[i]-1);       
   }
-  std::cout << result[2] << std::endl;
+
   double add = 0;
   int j = 0;
   int i = 0;

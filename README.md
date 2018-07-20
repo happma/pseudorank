@@ -21,6 +21,24 @@ if (!requireNamespace("devtools", quietly = TRUE)) {
 devtools::install_github("happma/pseudorank")
 library(pseudorank)
 ```
+
+## Calculating Pseudo-Ranks
+
+The function 'psrank' can either be used with data.frames or with vectors. Please note that when using a data.frame only one grouping factor can be used.
+
+``` r
+# some example data
+df <- data.frame(data =rnorm(100),group = c(rep(1,40),rep(2,40),rep(3,20)))
+df$group <- as.factor(df$group)
+
+# two ways to calculate pseudo-ranks
+# Variant 1: use a vector for the data and a group vector
+psrank(df$data,df$group)
+
+# Variant 2: use a formual object, Note that only one group factor can be used
+# that is, in data~group*group2 only 'group' will be used
+psrank(data~group,df)
+```
 In case of missing values there are three options to choose from. These are the
 same as for the function 'rank' or 'sort' from base R. It is recommended to use
 'na.last = NA' to remove the NAs. If the NAs are kept, they can either be put at the beginning
@@ -47,24 +65,6 @@ psrank(data, group, na.last = FALSE)
 # Variant 3: remove Nas (recommended)
 psrank(data, group, na.last = NA)
 
-```
-
-## Calculating Pseudo-Ranks
-
-The function 'psrank' can either be used with data.frames or with vectors. Please note that when using a data.frame only one grouping factor can be used.
-
-``` r
-# some example data
-df <- data.frame(data =rnorm(100),group = c(rep(1,40),rep(2,40),rep(3,20)))
-df$group <- as.factor(df$group)
-
-# two ways to calculate pseudo-ranks
-# Variant 1: use a vector for the data and a group vector
-psrank(df$data,df$group)
-
-# Variant 2: use a formual object, Note that only one group factor can be used
-# that is, in data~group*group2 only 'group' will be used
-psrank(data~group,df)
 ```
 
 ## Hettmansperger-Norton Test for Patterned Alternatives in k-Sample Problems

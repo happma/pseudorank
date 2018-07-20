@@ -12,11 +12,11 @@
 #' @param group vector coding for the groups
 #' @return Returns a numerical vector containing the pseudo-ranks
 #' @keywords internal
-recursiveCalculation <- function(data, group, na.last) {
+recursiveCalculation <- function(data, group, na.last, ties.method) {
 
   stopifnot(is.numeric(data), is.factor(group))
   n <- table(group)
-
+  
   # balanced group sizes
   if( identical(n,rep(n[1],length(n)))  ) {
     return(rank(data, ties.method = "average", na.last = na.last))
@@ -48,7 +48,14 @@ recursiveCalculation <- function(data, group, na.last) {
     ord <- .Call(`_pseudorank_order_vec`, data) + 1
     data_sorted <- data[ord]
     sortback <- match(data, data_sorted)
-    return(.Call(`_pseudorank_psrankCpp`, data_sorted, group[ord], n)[sortback])
+    if(ties.method == "average") {
+      return(.Call(`_pseudorank_psrankCpp`, data_sorted, group[ord], n)[sortback])
+    } else if(ties.method == "min") {
+      return(.Call(`_pseudorank_psrankMinCpp`, data_sorted, group[ord], n)[sortback])
+    } else {
+      return(.Call(`_pseudorank_psrankMaxCpp`, data_sorted, group[ord], n)[sortback])
+    }
+
   }
 }
 

@@ -29,10 +29,38 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// psrankMinCpp
+Rcpp::NumericVector psrankMinCpp(Rcpp::NumericVector& data, Rcpp::NumericVector& group, Rcpp::NumericVector& n);
+RcppExport SEXP _pseudorank_psrankMinCpp(SEXP dataSEXP, SEXP groupSEXP, SEXP nSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< Rcpp::NumericVector& >::type data(dataSEXP);
+    Rcpp::traits::input_parameter< Rcpp::NumericVector& >::type group(groupSEXP);
+    Rcpp::traits::input_parameter< Rcpp::NumericVector& >::type n(nSEXP);
+    rcpp_result_gen = Rcpp::wrap(psrankMinCpp(data, group, n));
+    return rcpp_result_gen;
+END_RCPP
+}
+// psrankMaxCpp
+Rcpp::NumericVector psrankMaxCpp(Rcpp::NumericVector& data, Rcpp::NumericVector& group, Rcpp::NumericVector& n);
+RcppExport SEXP _pseudorank_psrankMaxCpp(SEXP dataSEXP, SEXP groupSEXP, SEXP nSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< Rcpp::NumericVector& >::type data(dataSEXP);
+    Rcpp::traits::input_parameter< Rcpp::NumericVector& >::type group(groupSEXP);
+    Rcpp::traits::input_parameter< Rcpp::NumericVector& >::type n(nSEXP);
+    rcpp_result_gen = Rcpp::wrap(psrankMaxCpp(data, group, n));
+    return rcpp_result_gen;
+END_RCPP
+}
 
 static const R_CallMethodDef CallEntries[] = {
     {"_pseudorank_order_vec", (DL_FUNC) &_pseudorank_order_vec, 1},
     {"_pseudorank_psrankCpp", (DL_FUNC) &_pseudorank_psrankCpp, 3},
+    {"_pseudorank_psrankMinCpp", (DL_FUNC) &_pseudorank_psrankMinCpp, 3},
+    {"_pseudorank_psrankMaxCpp", (DL_FUNC) &_pseudorank_psrankMaxCpp, 3},
     {NULL, NULL, 0}
 };
 

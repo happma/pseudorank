@@ -8,9 +8,11 @@
 \usage{
 psrank(x, ...)
 
-\method{psrank}{numeric}(x, y, na.last = NA, ...)
+\method{psrank}{numeric}(x, y, na.last = NA, ties.method = c("average",
+  "max", "min"), ...)
 
-\method{psrank}{formula}(formula, data, na.last = NA, ...)
+\method{psrank}{formula}(formula, data, na.last = NA,
+  ties.method = c("average", "max", "min"), ...)
 }
 \arguments{
 \item{x}{vector containing the observations}
@@ -20,6 +22,8 @@ psrank(x, ...)
 \item{y}{vector specifiying the group to which the observations from the x vector belong to}
 
 \item{na.last}{for controlling the treatment of NAs. If TRUE, missing values in the data are put last; if FALSE, they are put first; if NA, they are removed.}
+
+\item{ties.method}{type of pseudo-ranks: either 'average' (recommended), 'min' or 'max'.}
 
 \item{formula}{formula object}
 

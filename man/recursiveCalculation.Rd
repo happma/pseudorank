@@ -4,7 +4,7 @@
 \alias{recursiveCalculation}
 \title{Calculation of Pseudo-Ranks}
 \usage{
-recursiveCalculation(data, group, na.last)
+recursiveCalculation(data, group, na.last, ties.method)
 }
 \arguments{
 \item{data}{numerical vector}

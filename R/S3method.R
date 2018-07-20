@@ -15,6 +15,7 @@
 #' @param data data.frame containing the variables in the formula (observations and group)
 #' @param formula formula object
 #' @param na.last for controlling the treatment of NAs. If TRUE, missing values in the data are put last; if FALSE, they are put first; if NA, they are removed.
+#' @param ties.method type of pseudo-ranks: either 'average' (recommended), 'min' or 'max'.
 #' @param ... further arguments
 #' @return Returns a numerical vector containing the pseudo-ranks.
 #' @rdname psrank
@@ -27,18 +28,20 @@ psrank <- function(x, ...){
 #' @method psrank numeric
 #' @rdname psrank
 #' @keywords export
-psrank.numeric <- function(x, y, na.last = NA, ...){
+psrank.numeric <- function(x, y, na.last = NA, ties.method = c("average", "max", "min"), ...){
   stopifnot(na.last %in% c(TRUE, FALSE, NA))
-  recursiveCalculation(x, y, na.last)
+  ties.method = match.arg(ties.method)
+  recursiveCalculation(x, y, na.last, ties.method)
 }
 
 #' @method psrank formula
 #' @rdname psrank
 #' @keywords export
-psrank.formula <- function(formula, data, na.last = NA, ...){
+psrank.formula <- function(formula, data, na.last = NA, ties.method = c("average", "max", "min"), ...){
   stopifnot(na.last %in% c(TRUE, FALSE, NA))
+  ties.method = match.arg(ties.method)
   df <- model.frame(formula, data, na.action = NULL)
-  recursiveCalculation(df[, 1], df[, 2], na.last)
+  recursiveCalculation(df[, 1], df[, 2], na.last, ties.method)
 }
 
 

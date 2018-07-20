@@ -9,3 +9,11 @@ psrankCpp <- function(data, group, n) {
     .Call(`_pseudorank_psrankCpp`, data, group, n)
 }
 
+psrankMinCpp <- function(data, group, n) {
+    .Call(`_pseudorank_psrankMinCpp`, data, group, n)
+}
+
+psrankMaxCpp <- function(data, group, n) {
+    .Call(`_pseudorank_psrankMaxCpp`, data, group, n)
+}
+

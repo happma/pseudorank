@@ -14,7 +14,7 @@
 #' @param y vector specifiying the group to which the observations from the x vector belong to
 #' @param data data.frame containing the variables in the formula (observations and group)
 #' @param formula formula object
-#' @param na.last for controlling the treatment of NAs. If TRUE, missing values in the data are put last; if FALSE, they are put first; if NA, they are removed.
+#' @param na.last for controlling the treatment of NAs. If TRUE, missing values in the data are put last; if FALSE, they are put first; if NA, they are removed (recommended).
 #' @param ties.method type of pseudo-ranks: either 'average' (recommended), 'min' or 'max'.
 #' @param ... further arguments
 #' @return Returns a numerical vector containing the pseudo-ranks.

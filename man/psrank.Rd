@@ -21,7 +21,7 @@ psrank(x, ...)
 
 \item{y}{vector specifiying the group to which the observations from the x vector belong to}
 
-\item{na.last}{for controlling the treatment of NAs. If TRUE, missing values in the data are put last; if FALSE, they are put first; if NA, they are removed.}
+\item{na.last}{for controlling the treatment of NAs. If TRUE, missing values in the data are put last; if FALSE, they are put first; if NA, they are removed (recommended).}
 
 \item{ties.method}{type of pseudo-ranks: either 'average' (recommended), 'min' or 'max'.}
 

@@ -10,8 +10,32 @@ mid <- pseudorank::psrank(df$data, df$group, ties.method = "average")
 
 context("Max and Min Pseudo-Ranks")
 
-test_that("function psrank missing values", {
+test_that("function psrank ties.method", {
   expect_equivalent(pseudorank::psrank(df$data, df$group, ties.method = "max"), result_max)
   expect_equivalent(pseudorank::psrank(df$data, df$group, ties.method = "min"), result_min)
   expect_equivalent(0.5*(m+M), mid)
+})
+
+
+df <- data.frame(data = c(1,7,1,2,3,3,5.5,5.5,7), group = c(1,1,1,2,2,3,3,3,3))
+df$group <- as.factor(df$group)
+m <- pseudorank::psrank(df$data, df$group, ties.method = "min")
+M <- pseudorank::psrank(df$data, df$group, ties.method = "max")
+mid <- pseudorank::psrank(df$data, df$group, ties.method = "average")
+
+test_that("function psrank ties.method", {
+  expect_equivalent(0.5*(m+M), mid)
+})
+
+
+df <- data.frame(data = c(1,7,1,2,3,3,5.5,7,7), group = c(1,1,1,2,2,2,3,3,3))
+df$group <- as.factor(df$group)
+m <- pseudorank::psrank(df$data, df$group, ties.method = "min")
+M <- pseudorank::psrank(df$data, df$group, ties.method = "max")
+mid <- pseudorank::psrank(df$data, df$group, ties.method = "average")
+
+test_that("function psrank rank ties.method", {
+  expect_equivalent(0.5*(m+M), mid)
+  expect_equivalent(m, rank(df$data, ties.method = "min"))
+  expect_equivalent(M, rank(df$data, ties.method = "max"))
 })

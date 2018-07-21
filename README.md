@@ -39,6 +39,21 @@ psrank(df$data,df$group)
 # that is, in data~group*group2 only 'group' will be used
 psrank(data~group,df)
 ```
+Similarly to the 'rank' function from base R, there are several different methods which can be used to handle ties in the data. Most nonparametric tests rely on so-called mid-(pseudo)-ranks, these are just the average of minimum and maximum (pseudo)-ranks.
+
+``` r
+# some example data
+df <- data.frame(data =rnorm(100),group = c(rep(1,40),rep(2,40),rep(3,20)))
+df$group <- as.factor(df$group)
+
+# min and max pseudo-ranks
+m <- psrank(df$data ,df$group, ties.method = "min")
+M <- psrank(df$data ,df$group, ties.method = "max")
+
+mid <- psrank(df$data ,df$group, ties.method = "average") # identical to (m+M)/2
+
+```
+
 In case of missing values there are three options to choose from. These are the
 same as for the function 'rank' or 'sort' from base R. It is recommended to use
 'na.last = NA' to remove the NAs. If the NAs are kept, they can either be put at the beginning

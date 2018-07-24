@@ -128,7 +128,9 @@ Rcpp::NumericVector psrankMinCpp(Rcpp::NumericVector &data, Rcpp::NumericVector 
         // we need to distinguish between i > 0 and i == 0, otherwise result[i-1] not defined
           result_ties[k] = result[i];
       }
-      result_ties[j] = result[i] + N/ngroups*add;
+      if(j < N) {
+        result_ties[j] = result[i] + N/ngroups*add;
+      }
       // resume for loop where last block of ties ended
       i = j-1;
     } // end if

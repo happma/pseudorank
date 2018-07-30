@@ -48,3 +48,20 @@ df1 <- data.frame(data = c(1,2,2,3,NA), group = as.factor(c(1,1,2,2,3)))
 test_that("function psrank missing values: level dropped", {
   expect_equivalent(pseudorank::psrank(df1$data, df1$group, na.last = NA), rank(df1$data, ties.method="average", na.last = NA), tolerance=1e-04)
 })
+
+
+# more unit tests for ties
+x <- c(1,1,1,1,2,3,4,5,6)
+x2 <- c(6,6,6,6,5,4,3,2,1)
+x3 <- rep(1,9)
+grp <- as.factor(c(1,1,2,2,2,3,3,3,3))
+
+result <- c(3.000, 3.000, 3.000, 3.000, 6.000, 6.875, 7.625, 8.375, 9.125)
+result2 <- c(7.000, 7.000, 7.000, 7.000, 4.000, 3.125, 2.375, 1.625, 0.875)
+
+test_that("function psrank: ties over groups", {
+  expect_equivalent(pseudorank::psrank(x,grp), result)
+  expect_equivalent(pseudorank::psrank(x2,grp), result2)
+  expect_equivalent(pseudorank::psrank(x3,grp), rep(5,9))
+})
+

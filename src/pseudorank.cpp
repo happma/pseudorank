@@ -153,7 +153,7 @@ Rcpp::NumericVector psrankMaxCpp(Rcpp::NumericVector &data, Rcpp::NumericVector 
   
   
   // Calculate the first pseudo-rank
-  result[0] = N/ngroups*1/n[0];
+  result[0] = N/ngroups*1/n[group[0]-1];
 
   // define the matrix for the differences between the pseudo-ranks
   NumericMatrix delta(ngroups, ngroups);

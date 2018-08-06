@@ -103,3 +103,7 @@ hettmansperger_norton_test(df$data, df$group, alternative="increasing")
 hettmansperger_norton_test(df$data, df$group, alternative="custom", trend = c(1, 3, 2))
 
 ```
+
+## Kruskal-Wallis Test with Pseudo-Ranks
+
+The Kruskal-Wallis test implemented in this package can use pseudo-ranks, if the argument 'pseudoranks = TRUE' is used.

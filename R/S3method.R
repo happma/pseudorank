@@ -97,6 +97,7 @@ hettmansperger_norton_test.formula <- function(formula, data, na.rm = FALSE, alt
 #' @param na.rm a logical value indicating if NA values should be removed
 #' @param formula optional formula object
 #' @param data optional data.frame of the data
+#' @param pseudoranks logical value indicating if pseudo-ranks or ranks should be used
 #' @param ... further arguments are ignored
 #' @return Returns an object of class 'pseudorank'
 #' @example R/example_3.txt
@@ -106,14 +107,14 @@ kruskal_wallis_test <- function(x, ...) {
   UseMethod("kruskal_wallis_test")
 }
 
-#' @method hettmansperger_norton_test numeric
+#' @method kruskal_wallis_test numeric
 #' @rdname kruskal_wallis_test
 #' @keywords export
 kruskal_wallis_test.numeric <- function(x, grp, na.rm = FALSE, pseudoranks = TRUE, ...) {
   return(kruskal_wallis_internal(data=x, group=grp, na.rm = na.rm, pseudoranks = pseudoranks, formula = NULL, ...))
 }
 
-#' @method hettmansperger_norton_test formula
+#' @method kruskal_wallis_test formula
 #' @rdname kruskal_wallis_test
 #' @keywords export
 kruskal_wallis_test.formula <- function(formula, data, na.rm = FALSE, pseudoranks = TRUE, ...) {

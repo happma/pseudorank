@@ -16,6 +16,8 @@ kruskal_wallis_internal(data, group, na.rm, formula = NULL,
 
 \item{formula}{formula object}
 
+\item{pseudoranks}{logical value indicating if pseudo-ranks or ranks should be used}
+
 \item{...}{further arguments are ignored}
 }
 \value{

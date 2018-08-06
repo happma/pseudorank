@@ -8,10 +8,10 @@
 \usage{
 kruskal_wallis_test(x, ...)
 
-\method{hettmansperger_norton_test}{numeric}(x, grp, na.rm = FALSE,
+\method{kruskal_wallis_test}{numeric}(x, grp, na.rm = FALSE,
   pseudoranks = TRUE, ...)
 
-\method{hettmansperger_norton_test}{formula}(formula, data, na.rm = FALSE,
+\method{kruskal_wallis_test}{formula}(formula, data, na.rm = FALSE,
   pseudoranks = TRUE, ...)
 }
 \arguments{
@@ -22,6 +22,8 @@ kruskal_wallis_test(x, ...)
 \item{grp}{factor specifying the groups}
 
 \item{na.rm}{a logical value indicating if NA values should be removed}
+
+\item{pseudoranks}{logical value indicating if pseudo-ranks or ranks should be used}
 
 \item{formula}{optional formula object}
 

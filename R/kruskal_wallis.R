@@ -5,6 +5,7 @@
 #' @param group factor specifying the groups
 #' @param na.rm a logical value indicating if NA values should be removed
 #' @param formula formula object
+#' @param pseudoranks logical value indicating if pseudo-ranks or ranks should be used
 #' @param ... further arguments are ignored
 #' @return Returns a data.frame with the results
 #' @example R/example_3.txt

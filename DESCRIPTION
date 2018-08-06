@@ -1,6 +1,6 @@
 Package: pseudorank
 Title: Pseudo-Ranks
-Version: 0.2.6
+Version: 0.3.0
 Date: 2018-07-24
 Authors@R: c(person("Martin Happ", role = c("aut", "cre"),
                       email = "martin.happ@aon.at",

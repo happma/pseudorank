@@ -42,4 +42,5 @@ test_that("function hettmansperger_norton_test missing values", {
   expect_equivalent(pseudorank::hettmansperger_norton_test(df2$data, df2$group, alternative = "increasing", na.rm=TRUE)$test, true_result, tolerance = 1e-04)
   expect_equivalent(pseudorank::hettmansperger_norton_test(df3$data, df3$group, alternative = "increasing")$test, true_result, tolerance = 1e-04)
   expect_error(pseudorank::hettmansperger_norton_test(df2$data, df2$group, alternative = "increasing"))
+  expect_error(pseudorank::hettmansperger_norton_test(data~group, data = df2, alternative = "increasing"))
 })

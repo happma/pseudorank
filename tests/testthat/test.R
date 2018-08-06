@@ -55,11 +55,14 @@ x <- c(1,1,1,1,2,3,4,5,6)
 x2 <- c(6,6,6,6,5,4,3,2,1)
 x3 <- rep(1,9)
 x4 <- c(1,2,2,2,2,2,2,2,3)
+x5 <- c(1,1,2,2,2,3,3,3,3)
 grp <- as.factor(c(1,1,2,2,2,3,3,3,3))
 
 result <- c(3.000, 3.000, 3.000, 3.000, 6.000, 6.875, 7.625, 8.375, 9.125)
 result2 <- c(7.000, 7.000, 7.000, 7.000, 4.000, 3.125, 2.375, 1.625, 0.875)
+result3 <- rep(5, 9)
 result4 <- c(1.250, 5.375, 5.375, 5.375, 5.375, 5.375, 5.375, 5.375, 9.125)
+result5 <- c(2, 2, 5, 5, 5, 8, 8, 8, 8)
 
 test_that("function psrank: ties over groups", {
   expect_equivalent(pseudorank::psrank(x,grp), result)
@@ -68,11 +71,47 @@ test_that("function psrank: ties over groups", {
   expect_equivalent(pseudorank::psrank(x2,grp), result2)
   expect_equivalent(pseudorank::psrank(x2,grp),(pseudorank::psrank(x2,grp, ties.method="min")+pseudorank::psrank(x2,grp, ties.method = "max"))*1/2 )
   
-  expect_equivalent(pseudorank::psrank(x3,grp), rep(5,9))
+  expect_equivalent(pseudorank::psrank(x3,grp), result3)
   expect_equivalent(pseudorank::psrank(x3,grp),(pseudorank::psrank(x3,grp, ties.method="min")+pseudorank::psrank(x3,grp, ties.method = "max"))*1/2 )
   
   expect_equivalent(pseudorank::psrank(x4,grp), result4)
   expect_equivalent(pseudorank::psrank(x4,grp),(pseudorank::psrank(x4,grp, ties.method="min")+pseudorank::psrank(x4,grp, ties.method = "max"))*1/2 )
   
+  expect_equivalent(pseudorank::psrank(x5,grp), result5)
+  expect_equivalent(pseudorank::psrank(x5,grp),(pseudorank::psrank(x5,grp, ties.method="min")+pseudorank::psrank(x5,grp, ties.method = "max"))*1/2 )
+  
 })
 
+
+
+# more unit tests for ties
+x <- c(1,1,1,1,2,3,4,5,6)
+x2 <- c(6,6,6,6,5,4,3,2,1)
+x3 <- rep(1,9)
+x4 <- c(1,2,2,2,2,2,2,2,3)
+x5 <- c(1,1,2,2,2,3,3,3,3)
+grp <- as.factor(c('A','A','B','B','B','D','D','D','D'))
+
+result <- c(3.000, 3.000, 3.000, 3.000, 6.000, 6.875, 7.625, 8.375, 9.125)
+result2 <- c(7.000, 7.000, 7.000, 7.000, 4.000, 3.125, 2.375, 1.625, 0.875)
+result3 <- rep(5, 9)
+result4 <- c(1.250, 5.375, 5.375, 5.375, 5.375, 5.375, 5.375, 5.375, 9.125)
+result5 <- c(2, 2, 5, 5, 5, 8, 8, 8, 8)
+
+test_that("function psrank: ties over groups 2", {
+  expect_equivalent(pseudorank::psrank(x,grp), result)
+  expect_equivalent(pseudorank::psrank(x,grp),(pseudorank::psrank(x,grp, ties.method="min")+pseudorank::psrank(x,grp, ties.method = "max"))*1/2 )
+  
+  expect_equivalent(pseudorank::psrank(x2,grp), result2)
+  expect_equivalent(pseudorank::psrank(x2,grp),(pseudorank::psrank(x2,grp, ties.method="min")+pseudorank::psrank(x2,grp, ties.method = "max"))*1/2 )
+  
+  expect_equivalent(pseudorank::psrank(x3,grp), result3)
+  expect_equivalent(pseudorank::psrank(x3,grp),(pseudorank::psrank(x3,grp, ties.method="min")+pseudorank::psrank(x3,grp, ties.method = "max"))*1/2 )
+  
+  expect_equivalent(pseudorank::psrank(x4,grp), result4)
+  expect_equivalent(pseudorank::psrank(x4,grp),(pseudorank::psrank(x4,grp, ties.method="min")+pseudorank::psrank(x4,grp, ties.method = "max"))*1/2 )
+  
+  expect_equivalent(pseudorank::psrank(x5,grp), result5)
+  expect_equivalent(pseudorank::psrank(x5,grp),(pseudorank::psrank(x5,grp, ties.method="min")+pseudorank::psrank(x5,grp, ties.method = "max"))*1/2 )
+  
+})

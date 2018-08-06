@@ -70,6 +70,7 @@ hettmansperger_norton_test_internal <- function(data, group, na.rm, alternative 
   pValue <- 1 - pnorm(test)
 
   output <- list()
+  output$name <- "Hettmansperger-Norton Trend Test"
   output$test <- test
   output$pValue <- pValue
   output$ss <- n
@@ -77,50 +78,8 @@ hettmansperger_norton_test_internal <- function(data, group, na.rm, alternative 
   output$alternative <- alternative
   output$formula <- formula
   output$trend <- trend
+  output$pseudoranks <- TRUE
   class(output) <- "pseudorank"
 
   return(output)
-
-}
-
-#' @keywords export
-print.pseudorank <- function(x, ...) {
-  cat("Hettmansperger-Norton Trend Test")
-  cat("\n","\n")
-  if(!is.null(x$formula)) {
-    cat("Call:", "\n")
-    print(x$formula)
-    cat("\n")
-  }
-  cat("Alternative: ", x$alternative, "\n")
-  if(x$alternative == "custom") {
-    cat("Trend: ", x$trend, "\n")
-  }
-  cat("Test Statistic: ", x$test, "\n")
-  cat("p-Value: ", x$pValue, "\n")
-  cat("\n")
-  cat("Descriptive:\n")
-  df <- data.frame(n = x$ss, p = x$pHat)
-  print(df, row.names = FALSE)
-}
-
-#' @keywords export
-summary.pseudorank <- function(object, ...) {
-  cat("Hettmansperger-Norton Trend Test")
-  cat("\n", "\n")
-  if(!is.null(object$formula)) {
-    cat("Call:", "\n")
-    print(object$formula)
-    cat("\n")
-  }
-  cat("Alternative: ", object$alternative, "\n")
-  if(object$alternative == "custom") {
-    cat("Trend: ", object$trend, "\n")
-  }
-  cat("Test Statistic: ", object$test, "\n")
-  cat("p-Value: ", object$pValue, "\n")
-  cat("\n")
-  cat("Descriptive:\n")
-  df <- data.frame(n = object$ss, p = object$pHat)
-  print(df, row.names = FALSE)
 }

@@ -9,10 +9,12 @@
 hettmansperger_norton_test(x, ...)
 
 \method{hettmansperger_norton_test}{numeric}(x, y, na.rm = FALSE,
-  alternative = c("decreasing", "increasing", "custom"), trend = NULL, ...)
+  alternative = c("decreasing", "increasing", "custom"), trend = NULL,
+  pseudoranks = TRUE, ...)
 
 \method{hettmansperger_norton_test}{formula}(formula, data, na.rm = FALSE,
-  alternative = c("decreasing", "increasing", "custom"), trend = NULL, ...)
+  alternative = c("decreasing", "increasing", "custom"), trend = NULL,
+  pseudoranks = TRUE, ...)
 }
 \arguments{
 \item{x}{vector containing the observations}
@@ -26,6 +28,8 @@ hettmansperger_norton_test(x, ...)
 \item{alternative}{either decreasing (trend k, k-1, ..., 1) or increasing (1, 2, ..., k) or custom (then argument trend must be specified)}
 
 \item{trend}{custom numeric vector indicating the trend for the custom alternative, only used if alternative = "custom"}
+
+\item{pseudoranks}{logical value indicating if pseudo-ranks or ranks should be used}
 
 \item{formula}{formula object}
 

@@ -56,6 +56,7 @@ psrank.formula <- function(formula, data, na.last = NA, ties.method = c("average
 #' @param na.rm a logical value indicating if NA values should be removed
 #' @param alternative either decreasing (trend k, k-1, ..., 1) or increasing (1, 2, ..., k) or custom (then argument trend must be specified)
 #' @param trend custom numeric vector indicating the trend for the custom alternative, only used if alternative = "custom"
+#' @param pseudoranks logical value indicating if pseudo-ranks or ranks should be used
 #' @param ... further arguments are ignored
 #' @return Returns an object.
 #' @example R/example_2.txt
@@ -69,17 +70,17 @@ hettmansperger_norton_test <- function(x, ...) {
 #' @method hettmansperger_norton_test numeric
 #' @rdname hettmansperger_norton_test
 #' @keywords export
-hettmansperger_norton_test.numeric <- function(x, y, na.rm = FALSE, alternative = c("decreasing", "increasing", "custom"), trend = NULL, ...) {
-  return(hettmansperger_norton_test_internal(x, y, na.rm, alternative = alternative, formula = NULL, trend = trend, ...))
+hettmansperger_norton_test.numeric <- function(x, y, na.rm = FALSE, alternative = c("decreasing", "increasing", "custom"), trend = NULL, pseudoranks = TRUE, ...) {
+  return(hettmansperger_norton_test_internal(x, y, na.rm, alternative = alternative, formula = NULL, trend = trend, pseudoranks = pseudoranks, ...))
 }
 
 #' @method hettmansperger_norton_test formula
 #' @rdname hettmansperger_norton_test
 #' @keywords export
-hettmansperger_norton_test.formula <- function(formula, data, na.rm = FALSE, alternative = c("decreasing", "increasing", "custom"), trend = NULL, ...) {
+hettmansperger_norton_test.formula <- function(formula, data, na.rm = FALSE, alternative = c("decreasing", "increasing", "custom"), trend = NULL, pseudoranks = TRUE, ...) {
   model <- model.frame(formula, data = data, na.action = NULL)
   colnames(model) <- c("data", "group")
-  return(hettmansperger_norton_test_internal(model$data, model$group, na.rm, alternative = alternative, formula = formula, trend = trend, ...))
+  return(hettmansperger_norton_test_internal(model$data, model$group, na.rm, alternative = alternative, formula = formula, trend = trend, pseudoranks = pseudoranks, ...))
 }
 
 

@@ -24,9 +24,9 @@ J <- function(d) {
 #' @references Brunner, E., Bathke A. C. and Konietschke, F. Rank- and Pseudo-Rank Procedures in Factorial Designs - Using R and SAS. Springer Verlag. to appear.
 #' @references Hettmansperger, T. P., & Norton, R. M. (1987). Tests for patterned alternatives in k-sample problems. Journal of the American Statistical Association, 82(397), 292-299
 #' @keywords internal
-hettmansperger_norton_test_internal <- function(data, group, na.rm, alternative = c("decreasing", "increasing", "custom"), formula = NULL, trend = NULL, ...) {
+hettmansperger_norton_test_internal <- function(data, group, na.rm, alternative = c("decreasing", "increasing", "custom"), formula = NULL, trend = NULL, pseudoranks = TRUE, ...) {
 
-  stopifnot(is.numeric(data), is.factor(group), is.ordered(group), is.logical(na.rm))
+  stopifnot(is.numeric(data), is.factor(group), is.ordered(group), is.logical(na.rm), is.logical(pseudoranks))
   
   if(sum(is.na(data)) > 0) {
     if(na.rm) {
@@ -42,7 +42,14 @@ hettmansperger_norton_test_internal <- function(data, group, na.rm, alternative 
 
   n <- as.numeric(as.matrix(table(group)))
   a <- length(n)
-  df <- data.frame(pranks = psrank.numeric(data, group), group = group)
+  
+  # calculate either pseudo-ranks or ranks
+  if(!pseudoranks) {
+    df <- data.frame(pranks = rank(data), group = group)
+  } else {
+    df <- data.frame(pranks = psrank.numeric(data, group), group = group)
+  }
+  
   df <- df[order(df$group),]
   pHat <- 1/sum(n)*(summaryBy(pranks~group,data=df, FUN = mean)[, 2]-1/2)
   n <- summaryBy(pranks~group,data=df, FUN = length)[, 2]
@@ -78,7 +85,7 @@ hettmansperger_norton_test_internal <- function(data, group, na.rm, alternative 
   output$alternative <- alternative
   output$formula <- formula
   output$trend <- trend
-  output$pseudoranks <- TRUE
+  output$pseudoranks <- pseudoranks
   class(output) <- "pseudorank"
 
   return(output)

@@ -39,7 +39,7 @@ hettmansperger_norton_test(x, ...)
 Returns an object.
 }
 \description{
-This function calculates the Hettmansperger-Norton trend test using pseudo-ranks under the null hypothesis H0F: F_1 = ... F_k = 0.
+This function calculates the Hettmansperger-Norton trend test using pseudo-ranks under the null hypothesis H0F: F_1 = ... F_k.
 }
 \examples{
 # create some data, please note that the group factor needs to be ordered

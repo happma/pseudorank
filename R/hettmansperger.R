@@ -11,7 +11,7 @@ J <- function(d) {
 
 #' Hettmansperger-Norton Trend Test for k-Samples
 #'
-#' @description This function calculates the Hettmansperger-Norton trend test using pseudo-ranks under the null hypothesis H0F: F_1 = ... F_k = 0.
+#' @description This function calculates the Hettmansperger-Norton trend test using pseudo-ranks under the null hypothesis H0F: F_1 = ... F_k.
 #' @param data numeric vector containing the data
 #' @param group ordered factor vector for the groups
 #' @param alternative either decreasing or increasing

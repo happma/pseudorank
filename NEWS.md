@@ -1,3 +1,7 @@
+# pseudorank 0.3.5
+* Added the Kepner-Robinson test for one-sample problems in repeated measures designs with compound symmetry covariance structure.
+
+
 # pseudorank 0.3.0
 
 * Added the Kruskal-Wallis test with an option to use either ranks or pseudo-ranks.

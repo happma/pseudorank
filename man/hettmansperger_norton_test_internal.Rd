@@ -27,7 +27,7 @@ hettmansperger_norton_test_internal(data, group, na.rm,
 Returns a data.frame with the results
 }
 \description{
-This function calculates the Hettmansperger-Norton trend test using pseudo-ranks under the null hypothesis H0F: F_1 = ... F_k = 0.
+This function calculates the Hettmansperger-Norton trend test using pseudo-ranks under the null hypothesis H0F: F_1 = ... F_k.
 }
 \examples{
 # create some data, please note that the group factor needs to be ordered

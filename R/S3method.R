@@ -47,7 +47,7 @@ psrank.formula <- function(formula, data, na.last = NA, ties.method = c("average
 
 #' Hettmansperger-Norton Trend Test for k-Samples
 #'
-#' @description This function calculates the Hettmansperger-Norton trend test using pseudo-ranks under the null hypothesis H0F: F_1 = ... F_k = 0.
+#' @description This function calculates the Hettmansperger-Norton trend test using pseudo-ranks under the null hypothesis H0F: F_1 = ... F_k.
 #' @rdname hettmansperger_norton_test
 #' @param x vector containing the observations
 #' @param y vector specifiying the group to which the observations from the x vector belong to
@@ -89,9 +89,9 @@ hettmansperger_norton_test.formula <- function(formula, data, na.rm = FALSE, alt
 
 
 
-#' Hettmansperger-Norton Trend Test for k-Samples
+#' Kruskal-Wallis Test
 #'
-#' @description This function calculates the Hettmansperger-Norton trend test using pseudo-ranks under the null hypothesis H0F: F_1 = ... F_k = 0.
+#' @description This function calculates the Kruskal-Wallis test using pseudo-ranks under the null hypothesis H0F: F_1 = ... F_k.
 #' @rdname kruskal_wallis_test
 #' @param x numeric vector containing the data
 #' @param grp factor specifying the groups
@@ -123,6 +123,50 @@ kruskal_wallis_test.formula <- function(formula, data, na.rm = FALSE, pseudorank
   colnames(model) <- c("data", "group")
   return(kruskal_wallis_internal(model$data, as.factor(model$group), na.rm = na.rm, formula = formula, pseudoranks = pseudoranks, ...))
 }
+
+
+
+
+
+#' Kepner-Robinson Test
+#'
+#' @description This function calculates the Kepner-Robinson test using pseudo-ranks under the null hypothesis H0F: F_1 = ... F_k where F_i are the marginal distributions. Each subject needs to have k measurements. This test assumes that the covariance matrix of a subject has a compound symmetry structure.
+#' @rdname kepner_robinson_test
+#' @param x numeric vector containing the data
+#' @param time factor specifying the groups
+#' @param subject factor specifying the subjects or the name of the subject column if a data.frame is used
+#' @param na.rm a logical value indicating if NA values should be removed
+#' @param formula optional formula object
+#' @param data optional data.frame of the data
+#' @param ... further arguments are ignored
+#' @return Returns an object of class 'pseudorank'
+#' @example R/example_4.txt
+#' @references James L. Kepner & David H. Robinson (1988) Nonparametric Methods for Detecting Treatment Effects in Repeated-Measures Designs, Journal of the American Statistical Association, 83:402, 456-461.
+#' @keywords export
+kepner_robinson_test <- function(x, ...) {
+  UseMethod("kepner_robinson_test")
+}
+
+#' @method kepner_robinson_test numeric
+#' @rdname kepner_robinson_test
+#' @keywords export
+kepner_robinson_test.numeric <- function(x, time, subject, na.rm = FALSE, ...) {
+  return(kepner_robinson_test_internal(data=x, time=as.factor(time), subject=as.factor(subject), na.rm = na.rm, formula = NULL, ...))
+}
+
+#' @method kepner_robinson_test formula
+#' @rdname kepner_robinson_test
+#' @keywords export
+kepner_robinson_test.formula <- function(formula, data, subject, na.rm = FALSE, ...) {
+  stopifnot(is.character(subject))
+  model <- model.frame(formula, data = data, na.action = NULL)
+  model$subject <- data[, subject]
+  colnames(model) <- c("data", "time", "subject")
+  return(kepner_robinson_test_internal(data=model$data, time=as.factor(model$time), subject=as.factor(model$subject), na.rm = na.rm, formula = formula, ...))
+}
+
+
+
 
 
 #' @keywords export

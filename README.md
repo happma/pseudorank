@@ -1,4 +1,4 @@
-# pseudorank
+# pseudorank 0.3.5
 
 [![CRANstatus](https://www.r-pkg.org/badges/version/pseudorank)](https://cran.r-project.org/package=pseudorank)
 [![](https://cranlogs.r-pkg.org/badges/pseudorank)](https://cran.r-project.org/package=pseudorank)
@@ -7,7 +7,7 @@
 [![codecov](https://codecov.io/gh/happma/pseudorank/branch/master/graph/badge.svg)](https://codecov.io/gh/happma/pseudorank)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/014857185eaf4387ad83f5d7509d059a)](https://www.codacy.com/project/happma/pseudorank/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=happma/pseudorank&amp;utm_campaign=Badge_Grade_Dashboard)
 
-This R package provides a function written in C++ to calculate pseudo-ranks in R and the Hettmansperger-Norton test with pseudo-ranks instead of ranks.
+This R package provides a function written in C++ to calculate pseudo-ranks in R and some rank statistics which can opionally use pseudo-ranks instead of ranks.
 For a definition and discussion of pseudo-ranks, see for example 
 
 Brunner, E., Bathke A. C. and Konietschke, F: Rank- and Pseudo-Rank Procedures in Factorial Designs - Using R and SAS, Springer Verlag, to appear.
@@ -108,3 +108,12 @@ hettmansperger_norton_test(df$data, df$group, alternative="custom", trend = c(1,
 ## Kruskal-Wallis Test with Pseudo-Ranks
 
 The Kruskal-Wallis test implemented in this package can use pseudo-ranks, if the argument 'pseudoranks = TRUE' is used.
+
+``` r
+# create some artificial data
+x = c(1, 1, 1, 1, 2, 3, 4, 5, 6)
+grp = as.factor(c('A','A','B','B','B','D','D','D','D'))
+df = data.frame(x = x, grp = grp)
+
+kruskal_wallis_test(x~grp, data=df, pseudoranks=TRUE)
+```

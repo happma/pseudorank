@@ -50,6 +50,8 @@ kruskal_wallis_internal <- function(data, group, na.rm, formula = NULL, pseudora
   output <- list()
   output$name <- "Kruskal-Wallis Test"
   output$test <- Q_N
+  output$distribution <- "Chisq"
+  output$df <- a-1
   output$pValue <- pValue
   output$ss <- n
   output$pHat <- 1/N*(R_mean-1/2)

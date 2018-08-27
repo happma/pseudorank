@@ -71,6 +71,7 @@ hettmansperger_norton_test <- function(x, ...) {
 #' @rdname hettmansperger_norton_test
 #' @keywords export
 hettmansperger_norton_test.numeric <- function(x, y, na.rm = FALSE, alternative = c("decreasing", "increasing", "custom"), trend = NULL, pseudoranks = TRUE, ...) {
+  alternative = match.arg(alternative)
   return(hettmansperger_norton_test_internal(x, y, na.rm, alternative = alternative, formula = NULL, trend = trend, pseudoranks = pseudoranks, ...))
 }
 
@@ -78,6 +79,7 @@ hettmansperger_norton_test.numeric <- function(x, y, na.rm = FALSE, alternative 
 #' @rdname hettmansperger_norton_test
 #' @keywords export
 hettmansperger_norton_test.formula <- function(formula, data, na.rm = FALSE, alternative = c("decreasing", "increasing", "custom"), trend = NULL, pseudoranks = TRUE, ...) {
+  alternative = match.arg(alternative)
   model <- model.frame(formula, data = data, na.action = NULL)
   colnames(model) <- c("data", "group")
   return(hettmansperger_norton_test_internal(model$data, model$group, na.rm, alternative = alternative, formula = formula, trend = trend, pseudoranks = pseudoranks, ...))
@@ -138,6 +140,7 @@ kruskal_wallis_test.formula <- function(formula, data, na.rm = FALSE, pseudorank
 #' @param na.rm a logical value indicating if NA values should be removed
 #' @param formula optional formula object
 #' @param data optional data.frame of the data
+#' @param distribution either 'Chisq' or 'F' approximation
 #' @param ... further arguments are ignored
 #' @return Returns an object of class 'pseudorank'
 #' @example R/example_4.txt
@@ -150,19 +153,21 @@ kepner_robinson_test <- function(x, ...) {
 #' @method kepner_robinson_test numeric
 #' @rdname kepner_robinson_test
 #' @keywords export
-kepner_robinson_test.numeric <- function(x, time, subject, na.rm = FALSE, ...) {
-  return(kepner_robinson_test_internal(data=x, time=as.factor(time), subject=as.factor(subject), na.rm = na.rm, formula = NULL, ...))
+kepner_robinson_test.numeric <- function(x, time, subject, na.rm = FALSE, distribution = c("Chisq", "F"), ...) {
+  distribution = match.arg(distribution)
+  return(kepner_robinson_test_internal(data=x, time=as.factor(time), subject=as.factor(subject), na.rm = na.rm, distribution = distribution, formula = NULL, ...))
 }
 
 #' @method kepner_robinson_test formula
 #' @rdname kepner_robinson_test
 #' @keywords export
-kepner_robinson_test.formula <- function(formula, data, subject, na.rm = FALSE, ...) {
+kepner_robinson_test.formula <- function(formula, data, subject, na.rm = FALSE, distribution = c("Chisq", "F"), ...) {
   stopifnot(is.character(subject))
+  distribution = match.arg(distribution)
   model <- model.frame(formula, data = data, na.action = NULL)
   model$subject <- data[, subject]
   colnames(model) <- c("data", "time", "subject")
-  return(kepner_robinson_test_internal(data=model$data, time=as.factor(model$time), subject=as.factor(model$subject), na.rm = na.rm, formula = formula, ...))
+  return(kepner_robinson_test_internal(data=model$data, time=as.factor(model$time), subject=as.factor(model$subject), na.rm = na.rm, distribution = distribution, formula = formula, ...))
 }
 
 
@@ -185,13 +190,17 @@ print.pseudorank <- function(x, ...) {
     }
   }
   cat("Test Statistic: ", x$test, "\n")
+  cat("Distribution of Statistic: ", x$distribution, "\n")
+  if(!is.null(x$df)) {
+    cat("Degrees of Freedom: ", paste(x$df,collapse=", "), "\n")
+  }
   cat("unweighted relative Effects / Pseudo-ranks: ", x$pseudoranks)
   cat("\n")
   cat("p-Value: ", x$pValue, "\n")
-  cat("\n")
-  cat("Descriptive:\n")
-  df <- data.frame(n = x$ss, p = x$pHat)
-  print(df, row.names = FALSE)
+  # cat("\n")
+  # cat("Descriptive:\n")
+  # df <- data.frame(n = x$ss, p = x$pHat)
+  # print(df, row.names = FALSE)
 }
 
 #' @keywords export
@@ -210,6 +219,10 @@ summary.pseudorank <- function(object, ...) {
     }
   }
   cat("Test Statistic: ", object$test, "\n")
+  cat("Distribution of Statistic: ", object$distribution, "\n")
+  if(!is.null(object$df)) {
+    cat("Degrees of Freedom: ", paste(object$df,collapse=", "), "\n")
+  }
   cat("unweighted relative Effects / Pseudo-ranks: ", object$pseudoranks)
   cat("\n")
   cat("p-Value: ", object$pValue, "\n")

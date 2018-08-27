@@ -12,7 +12,7 @@
 #' @example R/example_4.txt
 #' @references Hettmansperger, T. P., & Norton, R. M. (1987). Tests for patterned alternatives in k-sample problems. Journal of the American Statistical Association, 82(397), 292-299
 #' @keywords internal
-kepner_robinson_test_internal <- function(data, time, subject, na.rm, formula = NULL, ...) {
+kepner_robinson_test_internal <- function(data, time, subject, distribution, na.rm, formula = NULL, ...) {
   
   stopifnot(is.numeric(data), is.factor(time), is.factor(subject), is.logical(na.rm))
 
@@ -51,11 +51,22 @@ kepner_robinson_test_internal <- function(data, time, subject, na.rm, formula = 
 
   test <- sum( (R_dot - (N+1)/2 )^2 ) * n^2*(a-1)*1/den
 
-  pValue <- 1 - pchisq(test, a-1)
+  pValue <- 1
+  df <- a - 1
+  if(distribution == "Chisq") {
+    pValue <- 1 - pchisq(test, a-1)
+  } else if(distribution == "F") {
+    test <- test*1/(a-1)
+    pValue <- 1 - pf(test, a-1, n*(a-1))
+    df <- c(a-1, n*(a-1))
+  }
+
   
   output <- list()
   output$name <- "Kepner-Robinson Test"
   output$test <- test
+  output$distribution <- distribution
+  output$df <- df
   output$pValue <- pValue
   output$ss <- n
   output$pHat <- pHat

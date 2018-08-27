@@ -8,10 +8,11 @@
 \usage{
 kepner_robinson_test(x, ...)
 
-\method{kepner_robinson_test}{numeric}(x, time, subject, na.rm = FALSE, ...)
+\method{kepner_robinson_test}{numeric}(x, time, subject, na.rm = FALSE,
+  distribution = c("Chisq", "F"), ...)
 
 \method{kepner_robinson_test}{formula}(formula, data, subject, na.rm = FALSE,
-  ...)
+  distribution = c("Chisq", "F"), ...)
 }
 \arguments{
 \item{x}{numeric vector containing the data}
@@ -23,6 +24,8 @@ kepner_robinson_test(x, ...)
 \item{subject}{factor specifying the subjects or the name of the subject column if a data.frame is used}
 
 \item{na.rm}{a logical value indicating if NA values should be removed}
+
+\item{distribution}{either 'Chisq' or 'F' approximation}
 
 \item{formula}{optional formula object}
 

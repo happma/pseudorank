@@ -79,6 +79,8 @@ hettmansperger_norton_test_internal <- function(data, group, na.rm, alternative 
   output <- list()
   output$name <- "Hettmansperger-Norton Trend Test"
   output$test <- test
+  output$distribution <- "Standard-Normal"
+  output$df <- NULL
   output$pValue <- pValue
   output$ss <- n
   output$pHat <- pHat

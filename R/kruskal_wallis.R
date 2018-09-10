@@ -31,10 +31,10 @@ kruskal_wallis_internal <- function(data, group, na.rm, formula = NULL, pseudora
   N <- sum(n)
   a <- length(n)
   if(pseudoranks){
-    df <- data.frame(pranks = psrank(data, group), group = group)
+    df <- data.frame(pranks = pseudorank(data, group), group = group)
     
   } else {
-    df <- data.frame(pranks = psrank(data, as.factor(rep(1, length(data)))), group = group)
+    df <- data.frame(pranks = pseudorank(data, as.factor(rep(1, length(data)))), group = group)
   }
   df <- df[order(df$group),]
   R_mean <- summaryBy(pranks~group,data=df, FUN = mean)[, 2]

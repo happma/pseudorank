@@ -47,7 +47,7 @@ hettmansperger_norton_test_internal <- function(data, group, na.rm, alternative 
   if(!pseudoranks) {
     df <- data.frame(pranks = rank(data), group = group)
   } else {
-    df <- data.frame(pranks = psrank.numeric(data, group), group = group)
+    df <- data.frame(pranks = pseudorank.numeric(data, group), group = group)
   }
   
   df <- df[order(df$group),]

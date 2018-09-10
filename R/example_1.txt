@@ -4,8 +4,8 @@ df$group <- as.factor(df$group)
 ## two ways to calculate pseudo-ranks
 
 # Variant 1: use a vector for the data and a group vector
-psrank(df$data,df$group)
+pseudorank(df$data,df$group)
 
 # Variant 2: use a formula object, Note that only one group factor can be used
 # that is, in data~group*group2 only 'group' will be used
-psrank(data~group,df)
+pseudorank(data~group,df)

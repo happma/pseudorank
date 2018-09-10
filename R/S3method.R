@@ -18,30 +18,50 @@
 #' @param ties.method type of pseudo-ranks: either 'average' (recommended), 'min' or 'max'.
 #' @param ... further arguments
 #' @return Returns a numerical vector containing the pseudo-ranks.
-#' @rdname psrank
+#' @rdname pseudorank
 #' @example R/example_1.txt
 #' @keywords export
-psrank <- function(x, ...){
-  UseMethod("psrank")
+pseudorank <- function(x, ...){
+  UseMethod("pseudorank")
 }
 
-#' @method psrank numeric
-#' @rdname psrank
+#' @method pseudorank numeric
+#' @rdname pseudorank
 #' @keywords export
-psrank.numeric <- function(x, y, na.last = NA, ties.method = c("average", "max", "min"), ...){
+pseudorank.numeric <- function(x, y, na.last = NA, ties.method = c("average", "max", "min"), ...){
   stopifnot(na.last %in% c(TRUE, FALSE, NA))
   ties.method = match.arg(ties.method)
   recursiveCalculation(x, y, na.last, ties.method)
 }
 
-#' @method psrank formula
-#' @rdname psrank
+#' @method pseudorank formula
+#' @rdname pseudorank
 #' @keywords export
-psrank.formula <- function(formula, data, na.last = NA, ties.method = c("average", "max", "min"), ...){
+pseudorank.formula <- function(formula, data, na.last = NA, ties.method = c("average", "max", "min"), ...){
   stopifnot(na.last %in% c(TRUE, FALSE, NA))
   ties.method = match.arg(ties.method)
   df <- model.frame(formula, data, na.action = NULL)
   recursiveCalculation(df[, 1], df[, 2], na.last, ties.method)
+}
+
+#' Calculation of Pseudo-Ranks (Deprecated)
+#'
+#' @description Calculation of (mid) pseudo-ranks of a sample. In case of ties (i.e. equal values), the average of min pseudo-ranks and max-pseudo-ranks are taken (similar to rank with ties.method="average").
+#' @param x vector containing the observations
+#' @param y vector specifiying the group to which the observations from the x vector belong to
+#' @param data data.frame containing the variables in the formula (observations and group)
+#' @param formula formula object
+#' @param na.last for controlling the treatment of NAs. If TRUE, missing values in the data are put last; if FALSE, they are put first; if NA, they are removed (recommended).
+#' @param ties.method type of pseudo-ranks: either 'average' (recommended), 'min' or 'max'.
+#' @param ... further arguments
+#' @return Returns a numerical vector containing the pseudo-ranks.
+#' @rdname psrank-deprecated
+#' @example R/example_1.txt
+#' @keywords export
+psrank <- function(x, ...) {
+  .Deprecated("pseudorank", package=NULL,
+              old = as.character(sys.call(sys.parent()))[1L])
+  UseMethod("pseudorank")
 }
 
 

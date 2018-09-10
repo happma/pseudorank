@@ -9,17 +9,7 @@ psrank(x, ...)
 \arguments{
 \item{x}{vector containing the observations}
 
-\item{...}{further arguments}
-
-\item{y}{vector specifiying the group to which the observations from the x vector belong to}
-
-\item{data}{data.frame containing the variables in the formula (observations and group)}
-
-\item{formula}{formula object}
-
-\item{na.last}{for controlling the treatment of NAs. If TRUE, missing values in the data are put last; if FALSE, they are put first; if NA, they are removed (recommended).}
-
-\item{ties.method}{type of pseudo-ranks: either 'average' (recommended), 'min' or 'max'.}
+\item{...}{further arguments (see help for pseudorank)}
 }
 \value{
 Returns a numerical vector containing the pseudo-ranks.

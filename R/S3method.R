@@ -19,6 +19,7 @@
 #' @param ... further arguments
 #' @return Returns a numerical vector containing the pseudo-ranks.
 #' @rdname pseudorank
+#' @references Brunner, E., Bathke, A.C., and Konietschke, F. (2018a). Rank- and Pseudo-Rank Procedures for Independent Observations in Factorial Designs - Using R and SAS. Springer Series in Statistics, Springer, Heidelberg. ISBN: 978-3-030-02912-8.
 #' @example R/example_1.txt
 #' @keywords export
 pseudorank <- function(x, ...){
@@ -75,7 +76,7 @@ psrank <- function(x, ...) {
 #' @param ... further arguments are ignored
 #' @return Returns an object.
 #' @example R/example_2.txt
-#' @references Brunner, E., Bathke A. C. and Konietschke, F. Rank- and Pseudo-Rank Procedures in Factorial Designs - Using R and SAS. Springer Verlag. to appear.
+#' @references Brunner, E., Bathke, A.C., and Konietschke, F. (2018a). Rank- and Pseudo-Rank Procedures for Independent Observations in Factorial Designs - Using R and SAS. Springer Series in Statistics, Springer, Heidelberg. ISBN: 978-3-030-02912-8.
 #' @references Hettmansperger, T. P., & Norton, R. M. (1987). Tests for patterned alternatives in k-sample problems. Journal of the American Statistical Association, 82(397), 292-299
 #' @keywords export
 hettmansperger_norton_test <- function(x, ...) {
@@ -119,7 +120,7 @@ hettmansperger_norton_test.formula <- function(formula, data, na.rm = FALSE, alt
 #' @param ... further arguments are ignored
 #' @return Returns an object of class 'pseudorank'
 #' @example R/example_3.txt
-#' @references Brunner, E., Bathke A. C. and Konietschke, F. Rank- and Pseudo-Rank Procedures in Factorial Designs - Using R and SAS. Springer Verlag. to appear.
+#' @references Brunner, E., Bathke, A.C., and Konietschke, F. (2018a). Rank- and Pseudo-Rank Procedures for Independent Observations in Factorial Designs - Using R and SAS. Springer Series in Statistics, Springer, Heidelberg. ISBN: 978-3-030-02912-8.
 #' @keywords export
 kruskal_wallis_test <- function(x, ...) {
   UseMethod("kruskal_wallis_test")
@@ -147,7 +148,7 @@ kruskal_wallis_test.formula <- function(formula, data, na.rm = FALSE, pseudorank
 
 #' Kepner-Robinson Test
 #'
-#' @description This function calculates the Kepner-Robinson test using pseudo-ranks under the null hypothesis H0F: F_1 = ... F_k where F_i are the marginal distributions. Each subject needs to have k measurements. This test assumes that the covariance matrix of a subject has a compound symmetry structure.
+#' @description This function calculates the Kepner-Robinson test using ranks under the null hypothesis H0F: F_1 = ... F_k where F_i are the marginal distributions. Each subject needs to have k measurements. This test assumes that the covariance matrix of a subject has a compound symmetry structure.
 #' @rdname kepner_robinson_test
 #' @param x numeric vector containing the data
 #' @param time factor specifying the groups

@@ -10,7 +10,7 @@
 #' @param ... further arguments are ignored
 #' @return Returns a data.frame with the results
 #' @example R/example_4.txt
-#' @references Hettmansperger, T. P., & Norton, R. M. (1987). Tests for patterned alternatives in k-sample problems. Journal of the American Statistical Association, 82(397), 292-299
+#' @references Kepner, J. L., & Robinson, D. H. (1988). Nonparametric methods for detecting treatment effects in repeated-measures designs. Journal of the American Statistical Association, 83(402), 456-461.
 #' @keywords internal
 kepner_robinson_test_internal <- function(data, time, subject, distribution, na.rm, formula = NULL, ...) {
   

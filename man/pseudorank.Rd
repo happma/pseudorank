@@ -48,4 +48,7 @@ pseudorank(df$data,df$group)
 # that is, in data~group*group2 only 'group' will be used
 pseudorank(data~group,df)
 }
+\references{
+Brunner, E., Bathke, A.C., and Konietschke, F. (2018a). Rank- and Pseudo-Rank Procedures for Independent Observations in Factorial Designs - Using R and SAS. Springer Series in Statistics, Springer, Heidelberg. ISBN: 978-3-030-02912-8.
+}
 \keyword{export}

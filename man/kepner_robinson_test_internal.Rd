@@ -39,6 +39,6 @@ kepner_robinson_test(data,time,subject)
 kepner_robinson_test(data~time,data=df,subject="subject")
 }
 \references{
-Hettmansperger, T. P., & Norton, R. M. (1987). Tests for patterned alternatives in k-sample problems. Journal of the American Statistical Association, 82(397), 292-299
+Kepner, J. L., & Robinson, D. H. (1988). Nonparametric methods for detecting treatment effects in repeated-measures designs. Journal of the American Statistical Association, 83(402), 456-461.
 }
 \keyword{internal}

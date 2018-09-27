@@ -1,3 +1,6 @@
+# pseudorank 0.3.6
+* Changed function name ''psrank'' to ''pseudorank'' and set ''psrank'' as deprecated.
+
 # pseudorank 0.3.5
 * Added the Kepner-Robinson test for one-sample problems in repeated measures designs with compound symmetry covariance structure.
 

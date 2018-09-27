@@ -21,7 +21,7 @@ J <- function(d) {
 #' @param ... further arguments are ignored
 #' @return Returns a data.frame with the results
 #' @example R/example_2.txt
-#' @references Brunner, E., Bathke A. C. and Konietschke, F. Rank- and Pseudo-Rank Procedures in Factorial Designs - Using R and SAS. Springer Verlag. to appear.
+#' @references Brunner, E., Bathke, A.C., and Konietschke, F. (2018a). Rank- and Pseudo-Rank Procedures for Independent Observations in Factorial Designs - Using R and SAS. Springer Series in Statistics, Springer, Heidelberg. ISBN: 978-3-030-02912-8.
 #' @references Hettmansperger, T. P., & Norton, R. M. (1987). Tests for patterned alternatives in k-sample problems. Journal of the American Statistical Association, 82(397), 292-299
 #' @keywords internal
 hettmansperger_norton_test_internal <- function(data, group, na.rm, alternative = c("decreasing", "increasing", "custom"), formula = NULL, trend = NULL, pseudoranks = TRUE, ...) {

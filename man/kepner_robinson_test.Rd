@@ -35,7 +35,7 @@ kepner_robinson_test(x, ...)
 Returns an object of class 'pseudorank'
 }
 \description{
-This function calculates the Kepner-Robinson test using pseudo-ranks under the null hypothesis H0F: F_1 = ... F_k where F_i are the marginal distributions. Each subject needs to have k measurements. This test assumes that the covariance matrix of a subject has a compound symmetry structure.
+This function calculates the Kepner-Robinson test using ranks under the null hypothesis H0F: F_1 = ... F_k where F_i are the marginal distributions. Each subject needs to have k measurements. This test assumes that the covariance matrix of a subject has a compound symmetry structure.
 }
 \examples{
 # create some artificial data with 20 subjects measured at two time points

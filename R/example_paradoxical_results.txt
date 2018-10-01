@@ -9,7 +9,7 @@ x3 <- sample(subset(dat, dat$conc == 3)$score, n[3], replace = TRUE)
 
 
 dat <- data.frame(score = c(x1, x2, x3),
-  conc = factor(c( rep(1,n[1]), rep(2,n[2]), rep(5,n[3]) ), ordered=T) )
+  conc = factor(c( rep(1,n[1]), rep(2,n[2]), rep(5,n[3]) ), ordered=TRUE) )
 
 # Hettmansperger-Norton test with ranks (pseudorannks = FALSE) returns a small p-value (0.011).
 # In contrast, the pseudo-rank test returns a large p-value (0.42). By changing the ratio of

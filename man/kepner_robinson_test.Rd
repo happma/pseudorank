@@ -50,4 +50,4 @@ kepner_robinson_test(data~time,data=df,subject="subject")
 \references{
 James L. Kepner & David H. Robinson (1988) Nonparametric Methods for Detecting Treatment Effects in Repeated-Measures Designs, Journal of the American Statistical Association, 83:402, 456-461.
 }
-\keyword{export}
+\keyword{internal}

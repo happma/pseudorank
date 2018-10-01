@@ -161,14 +161,14 @@ kruskal_wallis_test.formula <- function(formula, data, na.rm = FALSE, pseudorank
 #' @return Returns an object of class 'pseudorank'
 #' @example R/example_4.txt
 #' @references James L. Kepner & David H. Robinson (1988) Nonparametric Methods for Detecting Treatment Effects in Repeated-Measures Designs, Journal of the American Statistical Association, 83:402, 456-461.
-#' @keywords export
+#' @keywords internal
 kepner_robinson_test <- function(x, ...) {
   UseMethod("kepner_robinson_test")
 }
 
 #' @method kepner_robinson_test numeric
 #' @rdname kepner_robinson_test
-#' @keywords export
+#' @keywords internal
 kepner_robinson_test.numeric <- function(x, time, subject, na.rm = FALSE, distribution = c("Chisq", "F"), ...) {
   distribution = match.arg(distribution)
   return(kepner_robinson_test_internal(data=x, time=as.factor(time), subject=as.factor(subject), na.rm = na.rm, distribution = distribution, formula = NULL, ...))
@@ -176,7 +176,7 @@ kepner_robinson_test.numeric <- function(x, time, subject, na.rm = FALSE, distri
 
 #' @method kepner_robinson_test formula
 #' @rdname kepner_robinson_test
-#' @keywords export
+#' @keywords internal
 kepner_robinson_test.formula <- function(formula, data, subject, na.rm = FALSE, distribution = c("Chisq", "F"), ...) {
   stopifnot(is.character(subject))
   distribution = match.arg(distribution)

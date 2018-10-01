@@ -1,4 +1,4 @@
-# pseudorank 0.3.5
+# pseudorank 0.3.6
 
 [![CRANstatus](https://www.r-pkg.org/badges/version/pseudorank)](https://cran.r-project.org/package=pseudorank)
 [![](https://cranlogs.r-pkg.org/badges/pseudorank)](https://cran.r-project.org/package=pseudorank)

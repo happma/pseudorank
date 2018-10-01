@@ -38,14 +38,11 @@ Returns an object of class 'pseudorank'
 This function calculates the Kepner-Robinson test using ranks under the null hypothesis H0F: F_1 = ... F_k where F_i are the marginal distributions. Each subject needs to have k measurements. This test assumes that the covariance matrix of a subject has a compound symmetry structure.
 }
 \examples{
-# create some artificial data with 20 subjects measured at two time points
-data <- rnorm(40)
-time <- rep(c(1,2),20)
-subject <- gl(20,2)
-df <- data.frame(data=data,time=time,subject=subject)
+x = c(1, 1, 1, 1, 2, 3, 4, 5, 6)
+grp = as.factor(c('A','A','B','B','B','D','D','D','D'))
 
-kepner_robinson_test(data,time,subject)
-kepner_robinson_test(data~time,data=df,subject="subject")
+# calculate Kruskal-Wallis test using pseudo-ranks
+kruskal_wallis_test(x, grp, na.rm = FALSE, pseudoranks = TRUE)
 }
 \references{
 James L. Kepner & David H. Robinson (1988) Nonparametric Methods for Detecting Treatment Effects in Repeated-Measures Designs, Journal of the American Statistical Association, 83:402, 456-461.

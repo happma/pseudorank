@@ -1,4 +1,4 @@
-# pseudorank 0.3.6
+# pseudorank 0.3.7
 
 [![CRANstatus](https://www.r-pkg.org/badges/version/pseudorank)](https://cran.r-project.org/package=pseudorank)
 [![](https://cranlogs.r-pkg.org/badges/pseudorank)](https://cran.r-project.org/package=pseudorank)
@@ -26,7 +26,7 @@ library(pseudorank)
 
 ## Calculating Pseudo-Ranks
 
-The function 'psrank' can either be used with data.frames or with vectors. Please note that when using a data.frame only one grouping factor can be used.
+The function 'pseudorank' can either be used with data.frames or with vectors. Please note that when using a data.frame only one grouping factor can be used.
 
 ``` r
 # some example data
@@ -35,11 +35,11 @@ df$group <- as.factor(df$group)
 
 # two ways to calculate pseudo-ranks
 # Variant 1: use a vector for the data and a group vector
-psrank(df$data,df$group)
+pseudorank(df$data, df$group)
 
 # Variant 2: use a formual object, Note that only one group factor can be used
 # that is, in data~group*group2 only 'group' will be used
-psrank(data~group,df)
+pseudorank(data ~ group, df)
 ```
 Similarly to the 'rank' function from base R, there are several different methods which can be used to handle ties in the data. Most nonparametric tests rely on so-called mid-(pseudo)-ranks, these are just the average of minimum and maximum (pseudo)-ranks.
 
@@ -49,10 +49,10 @@ df <- data.frame(data =rnorm(100),group = c(rep(1,40),rep(2,40),rep(3,20)))
 df$group <- as.factor(df$group)
 
 # min and max pseudo-ranks
-m <- psrank(df$data ,df$group, ties.method = "min")
-M <- psrank(df$data ,df$group, ties.method = "max")
+m <- pseudorank(df$data ,df$group, ties.method = "min")
+M <- pseudorank(df$data ,df$group, ties.method = "max")
 
-mid <- psrank(df$data ,df$group, ties.method = "average") # identical to (m+M)/2
+mid <- pseudorank(df$data ,df$group, ties.method = "average") # identical to (m+M)/2
 
 ```
 
@@ -70,17 +70,17 @@ data = c(NA,7,1,NA,3,3,5.5,6,NA, 3, 1)
 group =  as.factor(c(1,1,1,2,2,2,3,3,3,1,3))
 
 # Variant 1: keep NAs and put them last
-psrank(data, group, na.last = TRUE)
+pseudorank(data, group, na.last = TRUE)
 
 # we change the order of observation 1 and 4 (both NAs)
 group =  as.factor(c(2,1,1,1,2,2,3,3,3,1,3))
-psrank(data, group, na.last = TRUE)
+pseudorank(data, group, na.last = TRUE)
 
 # Variant 2: keep NAs and put them first
-psrank(data, group, na.last = FALSE)
+pseudorank(data, group, na.last = FALSE)
 
 # Variant 3: remove Nas (recommended)
-psrank(data, group, na.last = NA)
+pseudorank(data, group, na.last = NA)
 
 ```
 

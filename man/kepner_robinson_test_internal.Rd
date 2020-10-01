@@ -4,8 +4,15 @@
 \alias{kepner_robinson_test_internal}
 \title{Kepner-Robinson Test}
 \usage{
-kepner_robinson_test_internal(data, time, subject, distribution, na.rm,
-  formula = NULL, ...)
+kepner_robinson_test_internal(
+  data,
+  time,
+  subject,
+  distribution,
+  na.rm,
+  formula = NULL,
+  ...
+)
 }
 \arguments{
 \item{data}{numeric vector containing the data}

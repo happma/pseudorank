@@ -4,9 +4,16 @@
 \alias{hettmansperger_norton_test_internal}
 \title{Hettmansperger-Norton Trend Test for k-Samples}
 \usage{
-hettmansperger_norton_test_internal(data, group, na.rm,
-  alternative = c("decreasing", "increasing", "custom"), formula = NULL,
-  trend = NULL, pseudoranks = TRUE, ...)
+hettmansperger_norton_test_internal(
+  data,
+  group,
+  na.rm,
+  alternative = c("decreasing", "increasing", "custom"),
+  formula = NULL,
+  trend = NULL,
+  pseudoranks = TRUE,
+  ...
+)
 }
 \arguments{
 \item{data}{numeric vector containing the data}

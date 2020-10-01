@@ -4,8 +4,14 @@
 \alias{kruskal_wallis_internal}
 \title{Hettmansperger-Norton Trend Test for k-Samples}
 \usage{
-kruskal_wallis_internal(data, group, na.rm, formula = NULL,
-  pseudoranks = TRUE, ...)
+kruskal_wallis_internal(
+  data,
+  group,
+  na.rm,
+  formula = NULL,
+  pseudoranks = TRUE,
+  ...
+)
 }
 \arguments{
 \item{data}{numeric vector containing the data}

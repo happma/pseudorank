@@ -20,6 +20,7 @@
 #' @return Returns a numerical vector containing the pseudo-ranks.
 #' @rdname pseudorank
 #' @references Brunner, E., Bathke, A.C., and Konietschke, F. (2018a). Rank- and Pseudo-Rank Procedures for Independent Observations in Factorial Designs - Using R and SAS. Springer Series in Statistics, Springer, Heidelberg. ISBN: 978-3-030-02912-8.
+#' @references Happ M, Zimmermann G, Brunner E, Bathke AC (2020). Pseudo-Ranks: How to Calculate Them Efficiently in R. Journal of Statistical Software, Code Snippets, *95*(1), 1-22. doi: 10.18637/jss.v095.c01 (URL:https://doi.org/10.18637/jss.v095.c01).
 #' @example R/example_1.txt
 #' @keywords export
 pseudorank <- function(x, ...){
@@ -53,6 +54,7 @@ pseudorank.formula <- function(formula, data, na.last = NA, ties.method = c("ave
 #' @return Returns a numerical vector containing the pseudo-ranks.
 #' @rdname psrank-deprecated
 #' @example R/example_1.txt
+#' @references Happ M, Zimmermann G, Brunner E, Bathke AC (2020). Pseudo-Ranks: How to Calculate Them Efficiently in R. Journal of Statistical Software, Code Snippets, *95*(1), 1-22. doi: 10.18637/jss.v095.c01 (URL:https://doi.org/10.18637/jss.v095.c01).
 #' @keywords export
 psrank <- function(x, ...) {
   .Deprecated("pseudorank", package=NULL,
@@ -77,6 +79,7 @@ psrank <- function(x, ...) {
 #' @return Returns an object.
 #' @example R/example_2.txt
 #' @references Brunner, E., Bathke, A.C., and Konietschke, F. (2018a). Rank- and Pseudo-Rank Procedures for Independent Observations in Factorial Designs - Using R and SAS. Springer Series in Statistics, Springer, Heidelberg. ISBN: 978-3-030-02912-8.
+#' @references Happ M, Zimmermann G, Brunner E, Bathke AC (2020). Pseudo-Ranks: How to Calculate Them Efficiently in R. Journal of Statistical Software, Code Snippets, *95*(1), 1-22. doi: 10.18637/jss.v095.c01 (URL:https://doi.org/10.18637/jss.v095.c01).
 #' @references Hettmansperger, T. P., & Norton, R. M. (1987). Tests for patterned alternatives in k-sample problems. Journal of the American Statistical Association, 82(397), 292-299
 #' @keywords export
 hettmansperger_norton_test <- function(x, ...) {

@@ -8,13 +8,25 @@
 \usage{
 hettmansperger_norton_test(x, ...)
 
-\method{hettmansperger_norton_test}{numeric}(x, y, na.rm = FALSE,
-  alternative = c("decreasing", "increasing", "custom"), trend = NULL,
-  pseudoranks = TRUE, ...)
+\method{hettmansperger_norton_test}{numeric}(
+  x,
+  y,
+  na.rm = FALSE,
+  alternative = c("decreasing", "increasing", "custom"),
+  trend = NULL,
+  pseudoranks = TRUE,
+  ...
+)
 
-\method{hettmansperger_norton_test}{formula}(formula, data, na.rm = FALSE,
-  alternative = c("decreasing", "increasing", "custom"), trend = NULL,
-  pseudoranks = TRUE, ...)
+\method{hettmansperger_norton_test}{formula}(
+  formula,
+  data,
+  na.rm = FALSE,
+  alternative = c("decreasing", "increasing", "custom"),
+  trend = NULL,
+  pseudoranks = TRUE,
+  ...
+)
 }
 \arguments{
 \item{x}{vector containing the observations}
@@ -54,6 +66,8 @@ hettmansperger_norton_test(df$data, df$group, alternative="custom", trend = c(1,
 }
 \references{
 Brunner, E., Bathke, A.C., and Konietschke, F. (2018a). Rank- and Pseudo-Rank Procedures for Independent Observations in Factorial Designs - Using R and SAS. Springer Series in Statistics, Springer, Heidelberg. ISBN: 978-3-030-02912-8.
+
+Happ M, Zimmermann G, Brunner E, Bathke AC (2020). Pseudo-Ranks: How to Calculate Them Efficiently in R. Journal of Statistical Software, Code Snippets, *95*(1), 1-22. doi: 10.18637/jss.v095.c01 (URL:https://doi.org/10.18637/jss.v095.c01).
 
 Hettmansperger, T. P., & Norton, R. M. (1987). Tests for patterned alternatives in k-sample problems. Journal of the American Statistical Association, 82(397), 292-299
 }

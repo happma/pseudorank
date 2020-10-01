@@ -1,7 +1,7 @@
 Package: pseudorank
 Title: Pseudo-Ranks
-Version: 0.3.7
-Date: 2018-10-04
+Version: 1.0.0
+Date: 2020-10-01
 Authors@R: c(person("Martin Happ", role = c("aut", "cre"),
                       email = "martin.happ@aon.at",
                       comment = c(ORCID = "0000-0003-0009-2665")),
@@ -9,7 +9,7 @@ Authors@R: c(person("Martin Happ", role = c("aut", "cre"),
 	      person("Arne C. Bathke", role = "aut"),
 	      person("Edgar Brunner", role = "aut"))
 Maintainer: Martin Happ <martin.happ@aon.at>
-Description: Efficient calculation of pseudo-ranks and (pseudo)-rank based test statistics. In case of equal sample sizes, pseudo-ranks and mid-ranks are equal. When used for inference mid-ranks may lead to paradoxical results. Pseudo-ranks are in general not affected by such a problem. For details, see Brunner, E., Bathke A. C. and Konietschke, F: Rank- and Pseudo-Rank Procedures in Factorial Designs - Using R and SAS, Springer Verlag, to appear.
+Description: Efficient calculation of pseudo-ranks and (pseudo)-rank based test statistics. In case of equal sample sizes, pseudo-ranks and mid-ranks are equal. When used for inference mid-ranks may lead to paradoxical results. Pseudo-ranks are in general not affected by such a problem <doi:10.18637/jss.v095.c01>.
 License: GPL-3
 Encoding: UTF-8
 LazyData: true
@@ -19,5 +19,5 @@ LinkingTo: Rcpp
 SystemRequirements: C++11
 URL: http://github.com/happma/pseudorank
 BugReports: http://github.com/happma/pseudorank/issues
-RoxygenNote: 6.0.1
+RoxygenNote: 7.1.1
 Suggests: testthat

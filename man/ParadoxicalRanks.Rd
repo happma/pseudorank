@@ -42,4 +42,7 @@ hettmansperger_norton_test(score ~ conc, data = dat, pseudoranks = FALSE,
 hettmansperger_norton_test(score ~ conc, data = dat, pseudoranks = TRUE,
   alternative = "increasing")
 }
+\references{
+Happ M, Zimmermann G, Brunner E, Bathke AC (2020). Pseudo-Ranks: How to Calculate Them Efficiently in R. Journal of Statistical Software, Code Snippets, *95*(1), 1-22. doi: 10.18637/jss.v095.c01 (URL:https://doi.org/10.18637/jss.v095.c01).
+}
 \keyword{datasets}

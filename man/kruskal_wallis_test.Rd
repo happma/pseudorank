@@ -8,11 +8,9 @@
 \usage{
 kruskal_wallis_test(x, ...)
 
-\method{kruskal_wallis_test}{numeric}(x, grp, na.rm = FALSE,
-  pseudoranks = TRUE, ...)
+\method{kruskal_wallis_test}{numeric}(x, grp, na.rm = FALSE, pseudoranks = TRUE, ...)
 
-\method{kruskal_wallis_test}{formula}(formula, data, na.rm = FALSE,
-  pseudoranks = TRUE, ...)
+\method{kruskal_wallis_test}{formula}(formula, data, na.rm = FALSE, pseudoranks = TRUE, ...)
 }
 \arguments{
 \item{x}{numeric vector containing the data}

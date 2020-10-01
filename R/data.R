@@ -20,5 +20,6 @@
 #' @name ParadoxicalRanks
 #' @usage data(ParadoxicalRanks)
 #' @format A data frame with 54 rows and 2 variables.
+#' @references Happ M, Zimmermann G, Brunner E, Bathke AC (2020). Pseudo-Ranks: How to Calculate Them Efficiently in R. Journal of Statistical Software, Code Snippets, *95*(1), 1-22. doi: 10.18637/jss.v095.c01 (URL:https://doi.org/10.18637/jss.v095.c01).
 #' @example R/example_paradoxical_results.txt
 "ParadoxicalRanks"

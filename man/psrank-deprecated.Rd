@@ -30,4 +30,7 @@ pseudorank(df$data,df$group)
 # that is, in data~group*group2 only 'group' will be used
 pseudorank(data~group,df)
 }
+\references{
+Happ M, Zimmermann G, Brunner E, Bathke AC (2020). Pseudo-Ranks: How to Calculate Them Efficiently in R. Journal of Statistical Software, Code Snippets, *95*(1), 1-22. doi: 10.18637/jss.v095.c01 (URL:https://doi.org/10.18637/jss.v095.c01).
+}
 \keyword{export}

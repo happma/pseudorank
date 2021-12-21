@@ -1,11 +1,9 @@
-# pseudorank 1.0.0
+# pseudorank 1.0.2
 
-[![CRANstatus](https://www.r-pkg.org/badges/version/pseudorank)](https://cran.r-project.org/package=pseudorank)
-[![](https://cranlogs.r-pkg.org/badges/pseudorank)](https://cran.r-project.org/package=pseudorank)
-[![Travis-CI Build Status](https://travis-ci.org/happma/pseudorank.svg?branch=master)](https://travis-ci.org/happma/pseudorank)
-[![Build status](https://ci.appveyor.com/api/projects/status/queq8aa7cpct3j16?svg=true)](https://ci.appveyor.com/project/happma/pseudorank)
-[![codecov](https://codecov.io/gh/happma/pseudorank/branch/master/graph/badge.svg)](https://codecov.io/gh/happma/pseudorank)
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/014857185eaf4387ad83f5d7509d059a)](https://www.codacy.com/project/happma/pseudorank/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=happma/pseudorank&amp;utm_campaign=Badge_Grade_Dashboard)
+[![CRANstatus](https://www.r-pkg.org/badges/version/pseudorank)](https://cran.r-project.org/package=pseudorank/)
+[![](https://cranlogs.r-pkg.org/badges/pseudorank)](https://cran.r-project.org/package=pseudorank/)
+[![Travis-CI Build Status](https://travis-ci.org/happma/pseudorank.svg?branch=master)](https://travis-ci.org/happma/pseudorank/)
+[![Build status](https://ci.appveyor.com/api/projects/status/queq8aa7cpct3j16?svg=true)](https://ci.appveyor.com/project/happma/pseudorank/)
 
 This R package provides a function written in C++ to calculate pseudo-ranks in R and some rank statistics which can opionally use pseudo-ranks instead of ranks.
 For a definition and discussion of pseudo-ranks, see for example 

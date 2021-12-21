@@ -162,7 +162,7 @@ kruskal_wallis_test.formula <- function(formula, data, na.rm = FALSE, pseudorank
 #' @param distribution either 'Chisq' or 'F' approximation
 #' @param ... further arguments are ignored
 #' @return Returns an object of class 'pseudorank'
-#' @example R/example_3.txt
+#' @example R/example_4.txt
 #' @references James L. Kepner & David H. Robinson (1988) Nonparametric Methods for Detecting Treatment Effects in Repeated-Measures Designs, Journal of the American Statistical Association, 83:402, 456-461.
 #' @keywords internal
 kepner_robinson_test <- function(x, ...) {

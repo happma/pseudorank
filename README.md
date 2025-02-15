@@ -1,9 +1,8 @@
-# pseudorank 1.0.2
+# pseudorank 1.0.3
 
 [![CRANstatus](https://www.r-pkg.org/badges/version/pseudorank)](https://cran.r-project.org/package=pseudorank/)
 [![](https://cranlogs.r-pkg.org/badges/pseudorank)](https://cran.r-project.org/package=pseudorank/)
-[![Travis-CI Build Status](https://travis-ci.org/happma/pseudorank.svg?branch=master)](https://travis-ci.org/happma/pseudorank/)
-[![Build status](https://ci.appveyor.com/api/projects/status/queq8aa7cpct3j16?svg=true)](https://ci.appveyor.com/project/happma/pseudorank/)
+[![DOI](https://img.shields.io/badge/DOI-10.18637%2Fjss.v095.c01-blue.svg)](https://dx.doi.org/10.18637/jss.v095.c01)
 
 This R package provides a function written in C++ to calculate pseudo-ranks in R and some rank statistics which can opionally use pseudo-ranks instead of ranks.
 For a definition and discussion of pseudo-ranks, see for example 

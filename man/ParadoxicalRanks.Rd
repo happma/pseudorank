@@ -4,7 +4,9 @@
 \name{ParadoxicalRanks}
 \alias{ParadoxicalRanks}
 \title{Artifical data of 54 subjects}
-\format{A data frame with 54 rows and 2 variables.}
+\format{
+A data frame with 54 rows and 2 variables.
+}
 \usage{
 data(ParadoxicalRanks)
 }

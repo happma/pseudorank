@@ -2,11 +2,11 @@
 #'
 #' @description This function calculates the Kepner-Robinsin test under the null hypothesis H0F: F_1 = ... F_k.
 #' @param data numeric vector containing the data
-#' @param group ordered factor vector for the groups
-#' @param alternative either decreasing or increasing
+#' @param time factor vector containing time points
+#' @param subject factor vector containing subjects
+#' @param distribution specified distribution, either Chisq or F
 #' @param na.rm a logical value indicating if NA values should be removed
 #' @param formula formula object
-#' @param trend custom numeric vector indicating the trend for the custom alternative, only used if alternative = "custom"
 #' @param ... further arguments are ignored
 #' @return Returns a data.frame with the results
 #' @example R/example_4.txt

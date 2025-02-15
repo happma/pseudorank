@@ -17,17 +17,17 @@ kepner_robinson_test_internal(
 \arguments{
 \item{data}{numeric vector containing the data}
 
+\item{time}{factor vector containing time points}
+
+\item{subject}{factor vector containing subjects}
+
+\item{distribution}{specified distribution, either Chisq or F}
+
 \item{na.rm}{a logical value indicating if NA values should be removed}
 
 \item{formula}{formula object}
 
 \item{...}{further arguments are ignored}
-
-\item{group}{ordered factor vector for the groups}
-
-\item{alternative}{either decreasing or increasing}
-
-\item{trend}{custom numeric vector indicating the trend for the custom alternative, only used if alternative = "custom"}
 }
 \value{
 Returns a data.frame with the results

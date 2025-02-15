@@ -1,3 +1,6 @@
+# pseudorank 1.0.3
+* Updated documentation
+
 # pseudorank 1.0.2
 * Fixed problem with the Kepner-Robinson-test
 

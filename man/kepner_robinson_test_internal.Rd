@@ -37,13 +37,13 @@ This function calculates the Kepner-Robinsin test under the null hypothesis H0F:
 }
 \examples{
 # create some artificial data with 20 subjects measured at two time points
-#data <- rnorm(40)
-#time <- rep(c(1,2),20)
-#subject <- gl(20,2)
-#df <- data.frame(data=data,time=time,subject=subject)
+data <- rnorm(40)
+time <- rep(c(1,2),20)
+subject <- gl(20,2)
+df <- data.frame(data=data,time=time,subject=subject)
 
-#kepner_robinson_test(data,time,subject)
-#kepner_robinson_test(data~time,data=df,subject="subject")
+kepner_robinson_test(data,time,subject)
+kepner_robinson_test(data~time,data=df,subject="subject")
 }
 \references{
 Kepner, J. L., & Robinson, D. H. (1988). Nonparametric methods for detecting treatment effects in repeated-measures designs. Journal of the American Statistical Association, 83(402), 456-461.
